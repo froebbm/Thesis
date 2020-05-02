@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Chapter 2:</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Development and Displacement</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="introduction.html">Introduction</a>
+</li>
+<li>
+  <a href="lit_review.html">Literature Review</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Chapter 2:</h1>
+<h3 class="subtitle">Literature Review</h3>
+
+</div>
+
+
+<p>There are many factors that affect a household’s propensity to move, either directly or indirectly, and many of these are not under direct control of the household. These can broadly be divided into individual factors, such as age and income, and neighborhood characteristics, such as crime and eviction rates.</p>
+<div id="individual-factors" class="section level1">
+<h1>Individual Factors</h1>
+<p>A variety of individual factors have been studied in relation to household mobility, including income, number of children, dissolution of romantic relationships, race, gender, disability status, educational attainment, and age. These factors have been shown to have significant effects on household mobility in previous research (Desmond, 2016; Desmond &amp; Gershenson, 2017).</p>
+<p>Income has long been associated with residential mobility, generally the impact of income and economic status has been found to be curvilinear (Desmond et al., 2015). According to this model both residents with lower economic status and higher economic status tend to have higher mobility than those with middle economic status and can be represented as a curvilinear relationship. It is theorized that residents with lower economic status were more likely to experience forced mobility, or displacement, though evictions (both formal and informal), rising rents, and other measures out of their control (Desmond &amp; Gershenson, 2017; Phinney, 2013). Meanwhile, higher economic status allows residents to move more frequently to chase trends and live in “up and coming neighborhood.” Middle income residents move significantly less often than low or high income residents (Desmond et al., 2015). There is evidence that suggests that middle income residents cannot afford to chase trends like high income residents or have less than market rate housing costs which makes moving undesirable (Coulton et al., 2012; Mateyka, 2015). However, research into middle income household stability has been inconclusive. Results from studies on middle income residential mobility have varied significantly more between cities than studies of high or low income (Coulton et al., 2012; Mateyka, 2015). Because the BTHC data comes from low income populations, a negative linear relationship is expected between income and residential mobility.</p>
+<p>Using income as a variable allows for the examination of another important factor, namely employment status (Desmond et al., 2015; Mulder &amp; Malmberg, 2011). Changes in employment have often been associated with household mobility. Households move to housing that is either more affordable in the case of job loss, or more expensive and presumably more desirable housing when finding a better job or receiving a promotion (Desmond et al., 2015; Mulder &amp; Malmberg, 2011; Pendall et al., 2006). While the BTHC does not directly collect information on employment, changes to income can effectively reflect mobility based on household income.</p>
+<p>Multiple studies have shown that when other factors are taken into account families with children were significantly more likely to be evicted than families without children (Desmond et al., 2013; Desmond &amp; Gershenson, 2017). A study of children and eviction in Milwaukee found that families with no children had a 7.3 percent chance of being evicted in a given year, this increased to 9.5 percent with one child, and 11.7 percent with two children (Desmond &amp; Gershenson, 2017). Multiple studies have found that women are more likely to be evicted than men (Desmond, 2012; Lempert &amp; Monsma, 1994). It is possible that this is due to women retaining custody of children in a divorce (Desmond, 2012; Desmond &amp; Gershenson, 2017). Another possible explication is that women were more likely to be targeted by subprime lenders (Baker, 2014).</p>
+<p>Studies on race have shown mixed results on displacement, some showing an effect and some showing little to no effect, often depending on how displacement was assessed (Coulton et al., 2012; Desmond &amp; Gershenson, 2017). On measures using eviction, little to no effect was observed between eviction and race. Some studies have found that racial discrimination related to housing access likely does not play a factor in the legal mechanism of displacement (Desmond, 2012; Desmond &amp; Gershenson, 2017; Lempert &amp; Monsma, 1994). In effect, landlords willing to accept tenants of color in the first place are not considering race when evicting their tenants (Desmond &amp; Gershenson, 2017). However, studies that take a more holistic look at displacement have found that black and latinx households are disproportionately displaced. These studies have used a variety of measures, including tracking household addresses, formal and informal evictions, and illegal practices such as utility shut offs and lock outs (Massey et al., 2010; Rugh, 2015).</p>
+<p>Not all moves are related to displacement, in fact many moves are a part of everyday life. The average American will move 11.7 times over the course of their life according to the US census (Chalabi, 2015). These moves can be cause by the dissolution of a relationship, partners moving in together, moving for school or work, or the need for different housing due to life events (Coulton et al., 2012; Mulder &amp; Malmberg, 2011). These events could include the birth of a new child, children leaving the home, or new housing to accommodate a disability (Fischer &amp; Malmberg, 2001).</p>
+<p>Generally speaking, the likelihood of moving decreases as individuals get older, outside their 20s where moves become more common (Fischer &amp; Malmberg, 2001; Mulder &amp; Malmberg, 2011). Highly educated individuals are more likely than less educated individuals to move, either to gain access to more specialized labor markets or as a course of their education, moving to attend school or study abroad. Additionally, those with higher educations are also more likely to have higher incomes and more likely to have unforced mobility (Desmond et al., 2015; Mulder &amp; Malmberg, 2011).</p>
+</div>
+<div id="neighborhood-factors" class="section level1">
+<h1>Neighborhood Factors</h1>
+<p>Neighborhood factors, including eviction rates, crime rates, average rent, and the effects of new development are often found to be more significant in mobility research focusing on displacement (Coulton et al., 2012; Desmond &amp; Gershenson, 2017; Freeman, 2005).</p>
+<p>In a 2017 study on eviction, Desmond and Gershenson found that the number of evictions in a neighborhood were positively correlated with the likelihood of a resident experiencing eviction. They believed that this is because landlords tend to operate in informal cabals. Landlords often tend to spatially cluster their properties and therefore interact with other landlords in their neighborhoods (Fligstein, 1996; Logan &amp; Molotch, 2007). Through these interactions business practices tend to diffuse spatially, resulting in neighborhoods where eviction is more common than other neighborhoods (Dobbin et al., 2007).</p>
+<p>Crime rate was studied in the context of eviction by Desmond and Gerhenson but has also been studied in the context of mobility in general, by Coulton et al. in 2012. Both studies found similar results, the safer residents felt in their neighborhood the less likely they were to move or let themselves be evicted.</p>
+<p>Gentrification has long been the focus of housing research, often with mixed results. Some studies have shown that landlords in gentrifying areas are more likely to evict their clients or raise their rents to force them out (Marcuse, 1986; Newman &amp; Wyly, 2006). Other studies have found either no relationship between gentrification and mobility (Vigdor et al., 2002). Gentrification has also been found to lead to decreased mobility among low-income renters as renters in these neighborhoods make “greater efforts to remain in their dwelling units, even if the proportion of their income devoted to rent rises” (Freeman &amp; Braconi, 2004, p. 51).</p>
+<p>While gentrification is a buzzword in the popular press and academic discourse, it is difficult to define quantitatively (K. Williams, 2015). Many of the quantitative approaches have varied including property value, the number of new coffee shops in an area, and indices created using a variety of metrics (K. Williams, 2015). However, studies using these quantitative approaches often have results that are solely dependent on the gentrification measure used. When the study is replicated using a different quantitative approach the results often contradict each other. If these measures were accurate in quantifying gentrification the approach used should have minimal effect on the outcome of the study (K. Williams, 2015). Therefore, many of the commonly used measurements of gentrification may not be accurate in reflecting displacement or do not fully capture causality (K. Williams, 2015). For this reason, this paper will not use any measure of gentrification and instead focus on more measurable contextual factors, such as new development.</p>
+</div>
+<div id="the-effects-of-new-development" class="section level1">
+<h1>The Effects of New Development</h1>
+<p>One of the causes or effects of gentrification, depending on the theoretical framework adopted by the study, is new commercial development (Pennington, 2018). These developments include both housing and other amenities and often appear in neighborhoods that could gentrify or are in the process of gentrifying. The exact impact of these developments on both rent and displacement has become a point of contention between housing policy advocates, urban planners, economists, and renters (Pennington, 2018).</p>
+<p>According to some experts, new housing developments may have some effect on gentrifying neighborhoods, but they will generally decrease the cost of housing in the area even if they are built at market rate (Anenberg &amp; Kung, 2018; Boulay, 2012). This theory is based on the assumption that increasing the housing supply will cause older units to filter through the housing supply (Pennington, 2018). Filtering is the process of affluent renters moving from less expensive housing to more expensive housing, which increases the supply of less expensive housing stock. This theoretically should drive prices down and lower the risk of displacement in the neighborhood (Zuk &amp; Chapple, 2016). These experts argue that increases in rental prices and housing value are likely caused by over restrictive land use regulations which artificially limit the housing supply (Kok et al., 2014; Pennington, 2018).</p>
+<p>Other experts note that new housing developments have spillover effects and cause nearby units to appreciate in value, which increases displacement pressures in a neighborhood (Pennington, 2018). Previous research shows that buildings within roughly a quarter mile of a new development tend to appreciate in value (Hornbeck &amp; Keniston, 2017). Other research showed that renovated units result in significant demographic changes not just in renovated units but also units within 200 feet of the renovated unit (Redding &amp; Sturm, 2016). Some studies also argue that affluent renters do not filter up to more expensive housing. Research by the Institute of Governmental Studies at the University of California, found that in the United States rental units become occupied by a lower income household at a rate of 2.2 percent per year, this rate is even smaller in strong housing markets like California or New England. Rents, however, only drop by a rate of 0.3 percent per year meaning it would take roughly 15 years for median income housing to become affordable to 80 percent median income and 50 years for 50 percent median income (Zuk &amp; Chapple, 2016).</p>
+<p>It is possible that both these effects, spillover and filtering, are occurring at the same time but vary spatially. One theoretical explanation is that new housing development increases rent and displacement pressure where it is built, but lowers rent and pressures on units further away (Pennington, 2018). Research also suggests that subsidized housing development significantly lowers displacement pressure on a regional scale (Zuk &amp; Chapple, 2016).</p>
+<p>Neighborhood factors are especially important for planners and policy makers. Significant neighborhood factors indicate that location is related to household mobility and place-based policies, like anti-eviction zones and zoning ordinances, are easier to implement and enforce than policies addressing individual characteristics (Desmond &amp; Gershenson, 2017; HUD, 2018; Pennington, 2018).</p>
+</div>
+<div id="limitations-of-previous-research" class="section level1">
+<h1>Limitations of Previous Research</h1>
+<p>One of the limitations of much of the previous research surrounding household mobility is the difficulty in acquiring accurate data (Pennington, 2018). Most studies focus on legal, or formal, evictions because the court documents are public record and relatively easy to get a hold of. However, eviction is only one of the many mechanisms responsible for displacement. Other mechanisms that can be used by a landlord include informal, i.e. non-legal, evictions, rent hikes, threats, utility shutoffs, lock outs, or any other pressure put on the tenet by their landlord encouraging them to move against their will. Additional mechanisms include a landlord experiencing foreclosure or a house being condemned (Desmond et al., 2015).</p>
+<p>Perhaps the most complete data set collected on household mobility is the Milwaukee Area Renters Survey (MARS) collected by a research team led by Matthew Desmond. The MARS instrument included 250 questions and was completed by 1,086 renters in Milwaukee between 2009 and 2011. It collected previous addresses, reasons for moving, and demographic data (Desmond, 2016). One of the limitations of this study is its generalizability. Firstly, it covers a limited geographic context so the generalizability of its results to other US cities is questionable, especially cities like San Francisco and Boston which have significantly different housing markets. Secondly, it has a limited temporal window and covers the years directly following the great recession and the foreclosure crisis of 2007 (Desmond et al., 2015).</p>
+<p>Additionally, much of the previous work on displacement has focused on census tracts or other areal units that aggregate data (Bousquet, 2017; Corriston et al., 2017; Easton et al., 2019; Freeman, 2005). This introduces the modifiable areal unit problem (MAUP) (Openshaw, 1984; Wong, 2009). The MAUP is a source of error when using data aggregated to an arbitrary spatial unit, such as census tracts or zip code tabulation areas (ZCTA), which represent a postal service area (Openshaw, 1984; US Census, 2019). A common example of the MAUP is observed gerrymandering, where politicians redraw districts to improve their odds of reelection. These divisions can be drawn in an almost infinite number of ways (Fotheringham &amp; Rogerson, 2009; Wong, 2009). Different aggregations can also benefit research as well, as aggregation protects individual privacy. This tradeoff between privacy and accuracy is usually considered acceptable. However, it always creates the uncertain geographic context problem (UGCoP) (Park &amp; Kwan, 2018). In the next chapter I discuss the data used in this thesis.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

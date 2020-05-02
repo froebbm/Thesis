@@ -1,0 +1,12 @@
+name: "developmentdisplacement"
+output_dir: "."
+navbar:
+  title: "Development and Displacement"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Introduction"
+      href: introduction.html
+    - text: "Literature Review"
+      href: lit_review.html
+    
