@@ -1,12 +1,11 @@
 ---
-title: "Chapter 2:"
-subtitle: "Literature Review"
+title: "Chapter 2: Literature Review"
 output: 
   html_document:
     toc: true
     toc_depth: 2
-    toc_float:
-      collapsed: true
+    toc_float: true
+      
 ---
 
 There are many factors that affect a household’s propensity to move, either directly or indirectly, and many of these are not under direct control of the household. These can broadly be divided into individual factors, such as age and income, and neighborhood characteristics, such as crime and eviction rates. 

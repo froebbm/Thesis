@@ -9,4 +9,20 @@ navbar:
       href: introduction.html
     - text: "Literature Review"
       href: lit_review.html
-    
+    - text: "Data, Data Preparation, and Methods"
+      href: methods.html     
+    - text: "Exploratory Data Analysis"
+      href: EDA.html
+    - text: "Results"
+      href: results.html
+    - text: "Discussion"
+      href: Discussion.html
+    - text: "Limitation"
+      href: Limitation.html
+    - text: "Works Cited"
+      href: Works.html
+      
+output:
+  html_document:
+    theme: journal
+    css: style.css
