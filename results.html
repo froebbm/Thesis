@@ -1,0 +1,2379 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Chapter 5: Results</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Development and Displacement</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="introduction.html">Introduction</a>
+</li>
+<li>
+  <a href="lit_review.html">Literature Review</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Chapter 5: Results</h1>
+
+</div>
+
+
+<p>In this chapter I discuss the results of logistic regression models estimated with the outcome variable “moved” and the variables coved in Chapters 3 and 4 as the predictors. “Moved” was a binary variable with values of 0 representing a resident not moving between the origin and destination and 1 representing a resident who did move between the origin and destination. Several models were run using subsets of the full dataset to maximize the number of participants. The exact variables included in each model and the results are summarized in the next sections.</p>
+<p>Logistic regression results are presented in odds ratios instead of coefficients. Odds ratios represent the change in the odds of moving associated with a one unit increase of the explanatory variable. For example, if the number of dependents variable had an odds ratio of 1.50 it would represent an increase in the odds of moving of one and half for each additional dependent. For categorical variables the odds ratio represents the change in odds associated with belonging to a group. For example, if being African American had an odds ratio of 2.50 it would mean African Americans are two and half times more likely to move than other races. Coefficients represent a similar measure but are measured in log-odds which can make interpretation difficult (UCLA, 2020b).</p>
+<div id="tax-return-data" class="section level1">
+<h1>Tax Return Data</h1>
+<div id="model-1a" class="section level2">
+<h2>Model 1A</h2>
+<p>The first model used income, filing status, age, and number of dependents available for all 66,858 observations in the study which resulted in many significant variables. However, this model was relatively weak with a pseudo r squared value of 0.016. Income (OR = 0.9999993), age (OR = 0.982), and filing as single (OR = 0.933) were all associated with decreased likelihood of moving, while filling as married filing separately (OR = 1.398) showed an increased likelihood. It is worth noting that while income had a significant effect it was relatively small. For every 1,000-dollar change in income the odds of moving only shifted by 0.07%.</p>
+</div>
+<div id="model-1b" class="section level2">
+<h2>Model 1B</h2>
+<p>The second model used changes in income, changes in relationship status, and changes in number of dependents and provided a weaker model than 1A with a pseudo R squared of 0.010. However, the significant variables did have stronger effects. All were associated with increased likelihood of moving, with having entered or dissolved a relationship almost doubling the odds (Entering OR = 1.979 and Dissolving = 1.941). A one thousand dollar increase in income was associated with a 0.49% increase to the odds of moving (OR = 1.0000049).</p>
+</div>
+<div id="model-1c" class="section level2">
+<h2>Model 1C</h2>
+<p>When income, filing status, number of dependents, age, changes in income, changes in relationship status, and changes in numbers of dependents were run in one model only the filing status variables were insignificant. Controlling for changes in relationship status mitigated the effect of other filing status and they were dropped from future models. Additionally, controlling for changes to the number of dependents made the total number significant, likely because families with more children experience eviction at a higher rate (Desmond &amp; Gershenson, 2017). Overall, this model was relatively weak with a pseudo R squared of 0.023. Table 3 presents the results of Models 1A, 1B, and 1C.</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Table 3 Tax Return Data
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Model 1A
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Model 1B
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Model 1C
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AGI, in 2019 Dollars
+</td>
+<td style="text-align:left;">
+1.000****
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.052
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+1.000****
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.327
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Filing Status
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Married Filing Joint
+</td>
+<td style="text-align:left;">
+1.03
+</td>
+<td style="text-align:left;">
+0.043
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Married Filing Separately
+</td>
+<td style="text-align:left;">
+1.398****
+</td>
+<td style="text-align:left;">
+0.096
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Qualifying Widow(er)
+</td>
+<td style="text-align:left;">
+0.992
+</td>
+<td style="text-align:left;">
+0.548
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Single
+</td>
+<td style="text-align:left;">
+0.933**
+</td>
+<td style="text-align:left;">
+0.032
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of Dependents
+</td>
+<td style="text-align:left;">
+0.998
+</td>
+<td style="text-align:left;">
+0.017
+</td>
+<td style="text-align:left;">
+2.361
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+0.960****
+</td>
+<td style="text-align:left;">
+0.012
+</td>
+<td style="text-align:left;">
+1.235
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:left;">
+0.982****
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:left;">
+1.055
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+0.983****
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:left;">
+1.044
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Change in AGI
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+1.000****
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.011
+</td>
+<td style="text-align:left;">
+1.000****
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.323
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Entered a Relationship
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+1.979****
+</td>
+<td style="text-align:left;">
+0.134
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2.094****
+</td>
+<td style="text-align:left;">
+0.142
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dissolved a Relationship
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+1.941****
+</td>
+<td style="text-align:left;">
+0.157
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2.193****
+</td>
+<td style="text-align:left;">
+0.179
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Child Aged Out
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+1.457****
+</td>
+<td style="text-align:left;">
+0.057
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.524****
+</td>
+<td style="text-align:left;">
+0.06
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Had Child
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+1.822****
+</td>
+<td style="text-align:left;">
+0.067
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.727****
+</td>
+<td style="text-align:left;">
+0.07
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pseudo -R2
+</td>
+<td style="text-align:left;">
+0.016
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+0.01
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+0.023
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> p &lt; .10. <em>. p &lt; .05 <strong>. p &lt; .01. </strong></em>. p &lt; .001 ****.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Note. N = 66,858. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor.
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div id="survey-data" class="section level1">
+<h1>Survey Data</h1>
+<p>Initial testing found only two of the education variables statistically significant, “no high school” and “GED.” To help interpretation, I collapsed this variable into a single variable, “graduated high school,” which was used in all future models.</p>
+<p>African American residents and those who selected Other were both more likely to have moved (AA OR = 1.142, Other OR = 1.504), while white residents were less likely to have moved (OR = 0.799). Men were more likely to have moved than women (OR = 1.134), while identifying as trans had no significant effect. This could be caused by the relatively few people who identified as trans in this study, 654 out of 43,802. Disability status had no statistically significant effect on whether a resident moved. Graduating high school was associated with a decrease in move likelihood (OR = 0.918), while earning a higher degree was associated with an increase in move likelihood (OR = 1.264). The full results are summarized below in Table 4.</p>
+<p>The pseudo R squared for these demographic variables was significantly higher than the tax data, 0.501 vs 0.023. This indicates that demographic factors are likely better at predicting movement behavior than economic and life course factors.</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Table 4 Demographic Factors
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Race
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+African American
+</td>
+<td style="text-align:left;">
+1.142**
+</td>
+<td style="text-align:left;">
+0.067
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Hispanic
+</td>
+<td style="text-align:left;">
+1.07
+</td>
+<td style="text-align:left;">
+0.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Multi-Racial
+</td>
+<td style="text-align:left;">
+0.909
+</td>
+<td style="text-align:left;">
+0.077
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Native American
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;">
+0.157
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Other
+</td>
+<td style="text-align:left;">
+1.504****
+</td>
+<td style="text-align:left;">
+0.149
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+White
+</td>
+<td style="text-align:left;">
+0.799****
+</td>
+<td style="text-align:left;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Graduated High School
+</td>
+<td style="text-align:left;">
+0.918**
+</td>
+<td style="text-align:left;">
+0.033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Earned Higher Degree
+</td>
+<td style="text-align:left;">
+1.264****
+</td>
+<td style="text-align:left;">
+0.09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Disability Status
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Disabled
+</td>
+<td style="text-align:left;">
+0.884
+</td>
+<td style="text-align:left;">
+0.088
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Lost Disability Benefits
+</td>
+<td style="text-align:left;">
+0.802
+</td>
+<td style="text-align:left;">
+0.111
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Not Disabled
+</td>
+<td style="text-align:left;">
+1.054
+</td>
+<td style="text-align:left;">
+0.097
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gender
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Male
+</td>
+<td style="text-align:left;">
+1.134****
+</td>
+<td style="text-align:left;">
+0.033
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Trans
+</td>
+<td style="text-align:left;">
+1.098
+</td>
+<td style="text-align:left;">
+0.138
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pseudo-R2
+</td>
+<td style="text-align:left;">
+0.501
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <em>p &lt; .10. <strong>p &lt; .05. </strong></em>p &lt; .01. ****p &lt; .001
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Note. N = 66,858. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor.
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div id="spatial-variables" class="section level1">
+<h1>Spatial Variables</h1>
+<div id="bandwidth-determination" class="section level2">
+<h2>Bandwidth Determination</h2>
+<p>According to pervious research the effects of new development level off after 1,320 ft or 402 meters. As stated in Chapter 3 bandwidths were set at 1 km, 0.5 km, and 0.1km for this study. To limit the effects of multicollinearity only one distance was chosen for each variable. Permits issued was significant at the 1 km and 0.5 km bandwidths, however the effect size was stronger at 0.5 km distance, in keeping with Tobler’s first law of geography, “nearer things are more related than distant things,” (Miller, 2004). Crimes reported was only significant at the 0.1 km distance. Table 5 summarizes these results.</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Table 5 Bandwidth Effects
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Within 1.0 km
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Within 0.5 km
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Within 0.1 km
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Permits Issued
+</td>
+<td style="text-align:left;">
+1.000****
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.985
+</td>
+<td style="text-align:left;">
+0.999****
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.603
+</td>
+<td style="text-align:left;">
+1.003
+</td>
+<td style="text-align:left;">
+0.003
+</td>
+<td style="text-align:left;">
+1.118
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crimes Reported
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.985
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.603
+</td>
+<td style="text-align:left;">
+0.999****
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.118
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pseudo -R2
+</td>
+<td style="text-align:left;">
+0.542
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+0.542
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+0.542
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> p &lt; .10. <em>. p &lt; .05 <strong>. p &lt; .01. </strong></em>. p &lt; .001 ****.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Note. N = 38,358. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor.
+</td>
+</tr>
+</tfoot>
+</table>
+<p>Additionally, tests were conducted to see if the different permit types, residential, commercial, and mixed use, and the nature of the crime, violent or non-violent, had significantly different effects. Every variable except for residential permits was significant and each variable had a different effect. Commercial permits and violent crimes increased move likelihood and non-violent crimes and mixed-use permits decreased move likelihood. Bandwidth tests were repeated to see if permit or crime type varied by distance, but results were identical to the total results and are not reported here. Lagged variables also had no significant effect on the OR values, the significance, or the pseudo R squared and were not used in future models.</p>
+</div>
+<div id="trend-surface" class="section level2">
+<h2>Trend Surface</h2>
+<p>To test for purely locational effects, a model was estimated using latitude and longitude as the only dependent variables. Only latitude was statistically significant and was associated with a decrease in the move likelihood of a resident. However, the pseudo R squared was -0.00001, meaning a regression with a constant as the only predictor was more accurate. Latitude and longitude were dropped from all other models and unfortunately other spatial models could not be estimated, see Chapter 7 for further explanation. The results of this trend surface analysis are presented in table 6.</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Table 6 Trend Surface
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Latitude
+</td>
+<td style="text-align:left;">
+0.896**
+</td>
+<td style="text-align:left;">
+0.049
+</td>
+<td style="text-align:left;">
+1.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Longitude
+</td>
+<td style="text-align:left;">
+0.998
+</td>
+<td style="text-align:left;">
+0.016
+</td>
+<td style="text-align:left;">
+1.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pseudo -R2
+</td>
+<td style="text-align:left;">
+0.000
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> p &lt; .10. <em>. p &lt; .05 <strong>. p &lt; .01. </strong></em>. p &lt; .001 ****.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Note. N = 66,856. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor.
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div id="permits-evictions-and-rent" class="section level2">
+<h2>Permits, Evictions, and Rent</h2>
+<p>Finally, a model was estimated using evictions per census tract, estimated rent per bedroom, and the crime and permit variables. All variables except residential permits were significant, with the crime and permit variables following the same pattern described earlier and rent (OR = 1.0002) and evictions (OR = 1.004) were both associated with an increased likelihood of moving. Specifically, a $1000 increase in per bedroom rent was associated with a 10.6% increase in move likelihood. Overall, these variables produced the strongest model of any individual set of variables (Pseudo – R2 = 0.772), which indicates that neighborhood characteristics are likely an important factor in why individuals and households choose to move. Table 7 summarizes all the model results for spatial variables.</p>
+<pre class="r"><code>setwd(&quot;C:/Users/brian/OneDrive/Documents/GitHub/Thesis&quot;)
+Table7 &lt;- read.csv(&quot;Table7.csv&quot;)
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+Table7[1,3] &lt;- &quot; &quot;
+Table7[1,4] &lt;- &quot; &quot;
+
+Table7[5,3] &lt;- &quot; &quot;
+Table7[5,4] &lt;- &quot; &quot;
+
+Table7[10,3] &lt;- &quot; &quot;
+Table7[10,4] &lt;- &quot; &quot;
+
+kable(Table7, caption = &quot;Table 7 Spatial Variables&quot;) %&gt;%
+  kable_styling(&quot;striped&quot;, full_width = F) %&gt;%
+  add_indent(c(2:4, 6:7)) %&gt;%
+  add_footnote(c(&quot;p &lt; .10. *. p &lt; .05 **. p &lt; .01. ***. p &lt; .001 ****.&quot;, &quot;Note. N = 20,177. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. &quot;), notation = &quot;none&quot;)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Table 7 Spatial Variables
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Within 0.5 km
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Commercial Permits
+</td>
+<td style="text-align:left;">
+1.002****
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.969
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Residential Permits
+</td>
+<td style="text-align:left;">
+0.999
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.299
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Mixed Use Permits
+</td>
+<td style="text-align:left;">
+0.997***
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:left;">
+3.096
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Within 0.1 km
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Violent Crimes Reported
+</td>
+<td style="text-align:left;">
+1.021****
+</td>
+<td style="text-align:left;">
+0.003
+</td>
+<td style="text-align:left;">
+2.575
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Non-Violent Crimes Reported
+</td>
+<td style="text-align:left;">
+0.991****
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:left;">
+2.809
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Evictions in Census Tract
+</td>
+<td style="text-align:left;">
+1.004***
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:left;">
+1.115
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estimated Rent Per Bedroom
+</td>
+<td style="text-align:left;">
+1.000***
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.814
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pseudo -R2
+</td>
+<td style="text-align:left;">
+0.772
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> p &lt; .10. <em>. p &lt; .05 <strong>. p &lt; .01. </strong></em>. p &lt; .001 ****.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Note. N = 20,177. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor.
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div id="full-model-results" class="section level1">
+<h1>Full Model Results</h1>
+<p>Combining the variables from previous models significantly reduced the sample sizes, from 20,177 to 7,447, but did provide the strongest model (Pseudo – R2 = 0.921). Additionally, there were no issues of multi-collinearity, with the highest VIF score only reaching 3.154 well under the threshold of 5. Due to the reduction in sample size the higher educational attainment achieved variable was dropped as all residents in the model had a value of “No”.</p>
+<p>With all other variables accounted for, only age and dissolving a relationship remained significant among the tax variables. Those who dissolved a relationship were almost two and half times more likely to move than those who did not (OR = 2.450). Older residents were less likely to move (OR = 0.978). Among the survey variables only graduating high school and being African American remained significant. African American’s were 32% more likely to move (OR = 1.320) and high school graduates were roughly 22% less likely to move (OR = 0.781). Violent and Non-Violent crime remained at roughly the same values from previous models and evictions and rent became insignificant. The permit variables, however, experienced some interesting changes.</p>
+<p>Accounting for all other variables only commercial permits within 0.5 km were statistically significant. Commercial permits were associated with a higher likelihood of moving with each additional permit increasing the likelihood of moving by 0.2%. This makes the household with the most commercial permits in this study 228% more likely to move than the household with the least permits, 1271 permits and 1 permit respectively.</p>
+<p>A random effects models was run with the glmmML package in R using the same data and found similar results. Most ORs only changed by a few thousandths and no variables changed in terms of significance. The random effects model did offer some improvement to the GLM model. A pseudo R squared could not be calculated as the log of the maximum likelihood value could not be extracted by any function in R or calculated by hand. The GLM model had an AIC of 5177.2 and the random effects model offered a modest improvement to 5149.0. A fixed effects model was also estimated, which had an AIC of 1072, but as described in Chapter 3 the fixed effects model was inappropriate for this data and likely inaccurate. Table 8 summarizes the GLM and random effects models.</p>
+<pre class="r"><code>setwd(&quot;C:/Users/brian/OneDrive/Documents/GitHub/Thesis&quot;)
+Table8 &lt;- read.csv(&quot;Table8.csv&quot;)
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+Table8[9,3] &lt;- &quot; &quot;
+Table8[9,4] &lt;- &quot; &quot;
+Table8[9,6] &lt;- &quot; &quot;
+
+Table8[17,3] &lt;- &quot; &quot;
+Table8[17,4] &lt;- &quot; &quot;
+Table8[17,6] &lt;- &quot; &quot;
+
+Table8[21,3] &lt;- &quot; &quot;
+Table8[21,4] &lt;- &quot; &quot;
+Table8[21,6] &lt;- &quot; &quot;
+
+Table8[24,3] &lt;- &quot; &quot;
+Table8[24,4] &lt;- &quot; &quot;
+Table8[24,6] &lt;- &quot; &quot;
+
+Table8[28,3] &lt;- &quot; &quot;
+Table8[28,4] &lt;- &quot; &quot;
+Table8[28,6] &lt;- &quot; &quot;
+
+kable(Table8, caption = &quot;Table 8 Full Model Results&quot;,
+      col.names = c(&quot;Variable&quot;, &quot;OR&quot;,   &quot;SE&quot;,   &quot;VIF&quot;, &quot;OR&quot;,    &quot;SE&quot;)) %&gt;%
+  kable_styling(&quot;striped&quot;, full_width = F) %&gt;%
+  add_indent(c(10:15, 18:20, 22:23, 25:27, 29:30)) %&gt;%
+  add_header_above(c(&quot; &quot;, &quot;General Linear Model&quot; = 3, &quot;Random Effects&quot; = 2)) %&gt;%
+  add_footnote(c(&quot;p &lt; .10. *. p &lt; .05 **. p &lt; .01. ***. p &lt; .001 ****.&quot;, &quot;Note. N = 7,447. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. &quot;), notation = &quot;none&quot;)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Table 8 Full Model Results
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+General Linear Model
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Random Effects
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+<th style="text-align:left;">
+VIF
+</th>
+<th style="text-align:left;">
+OR
+</th>
+<th style="text-align:left;">
+SE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AGI, in 2019 Dollars
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.746
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Change in AGI
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.779
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:left;">
+0.978****
+</td>
+<td style="text-align:left;">
+0.003
+</td>
+<td style="text-align:left;">
+1.145
+</td>
+<td style="text-align:left;">
+0.976****
+</td>
+<td style="text-align:left;">
+0.352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Entered a Relationship
+</td>
+<td style="text-align:left;">
+1.387
+</td>
+<td style="text-align:left;">
+0.447
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.397
+</td>
+<td style="text-align:left;">
+0.503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dissolved a Relationship
+</td>
+<td style="text-align:left;">
+2.450***
+</td>
+<td style="text-align:left;">
+0.762
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+2.586***
+</td>
+<td style="text-align:left;">
+0.931
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Child Aged Out
+</td>
+<td style="text-align:left;">
+1.087
+</td>
+<td style="text-align:left;">
+0.168
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.087
+</td>
+<td style="text-align:left;">
+0.391
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Had Child
+</td>
+<td style="text-align:left;">
+1.199
+</td>
+<td style="text-align:left;">
+0.199
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.168
+</td>
+<td style="text-align:left;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number of Dependents
+</td>
+<td style="text-align:left;">
+0.961
+</td>
+<td style="text-align:left;">
+0.045
+</td>
+<td style="text-align:left;">
+1.27
+</td>
+<td style="text-align:left;">
+0.968
+</td>
+<td style="text-align:left;">
+0.349
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Race
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+African American
+</td>
+<td style="text-align:left;">
+1.320*
+</td>
+<td style="text-align:left;">
+0.213
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.363*
+</td>
+<td style="text-align:left;">
+0.491
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Hispanic
+</td>
+<td style="text-align:left;">
+0.973
+</td>
+<td style="text-align:left;">
+0.17
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.983
+</td>
+<td style="text-align:left;">
+0.354
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Multi-Racial
+</td>
+<td style="text-align:left;">
+0.86
+</td>
+<td style="text-align:left;">
+0.183
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.84
+</td>
+<td style="text-align:left;">
+0.303
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Native American
+</td>
+<td style="text-align:left;">
+1.395
+</td>
+<td style="text-align:left;">
+0.581
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.522
+</td>
+<td style="text-align:left;">
+0.548
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Other
+</td>
+<td style="text-align:left;">
+1.215
+</td>
+<td style="text-align:left;">
+0.424
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.24
+</td>
+<td style="text-align:left;">
+0.446
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+White
+</td>
+<td style="text-align:left;">
+1.052
+</td>
+<td style="text-align:left;">
+0.192
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.058
+</td>
+<td style="text-align:left;">
+0.381
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Graduated Highschool
+</td>
+<td style="text-align:left;">
+0.781**
+</td>
+<td style="text-align:left;">
+0.079
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.759**
+</td>
+<td style="text-align:left;">
+0.273
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Disability Status
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Disabled
+</td>
+<td style="text-align:left;">
+1.094
+</td>
+<td style="text-align:left;">
+0.493
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.057
+</td>
+<td style="text-align:left;">
+0.381
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Lost Disability Benefits
+</td>
+<td style="text-align:left;">
+1.184
+</td>
+<td style="text-align:left;">
+0.6
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.148
+</td>
+<td style="text-align:left;">
+0.413
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Not Disabled
+</td>
+<td style="text-align:left;">
+1.355
+</td>
+<td style="text-align:left;">
+0.597
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.366
+</td>
+<td style="text-align:left;">
+0.492
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gender
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Male
+</td>
+<td style="text-align:left;">
+1.097
+</td>
+<td style="text-align:left;">
+0.089
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+1.101
+</td>
+<td style="text-align:left;">
+0.396
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Trans
+</td>
+<td style="text-align:left;">
+0.92
+</td>
+<td style="text-align:left;">
+0.989
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+0.914
+</td>
+<td style="text-align:left;">
+0.329
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Within 0.5 km
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Commercial Permits
+</td>
+<td style="text-align:left;">
+1.002***
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:left;">
+1.941
+</td>
+<td style="text-align:left;">
+1.002**
+</td>
+<td style="text-align:left;">
+0.361
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Residential Permits
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.001
+</td>
+<td style="text-align:left;">
+1.338
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Mixed Use Permits
+</td>
+<td style="text-align:left;">
+0.997
+</td>
+<td style="text-align:left;">
+0.002
+</td>
+<td style="text-align:left;">
+3.154
+</td>
+<td style="text-align:left;">
+0.997
+</td>
+<td style="text-align:left;">
+0.359
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Within 0.1 km
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Violent Crimes Reported
+</td>
+<td style="text-align:left;">
+1.023****
+</td>
+<td style="text-align:left;">
+0.005
+</td>
+<td style="text-align:left;">
+2.388
+</td>
+<td style="text-align:left;">
+1.025****
+</td>
+<td style="text-align:left;">
+0.369
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Non-Violent Crimes Reported
+</td>
+<td style="text-align:left;">
+0.987****
+</td>
+<td style="text-align:left;">
+0.002
+</td>
+<td style="text-align:left;">
+2.407
+</td>
+<td style="text-align:left;">
+0.986****
+</td>
+<td style="text-align:left;">
+0.355
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Evictions in Census Tract
+</td>
+<td style="text-align:left;">
+1.002
+</td>
+<td style="text-align:left;">
+0.003
+</td>
+<td style="text-align:left;">
+1.183
+</td>
+<td style="text-align:left;">
+1.001
+</td>
+<td style="text-align:left;">
+0.361
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Estimated Rent Per Bedroom
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.951
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pseudo -R2
+</td>
+<td style="text-align:left;">
+0.921
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:left;">
+5177.2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+5149
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> p &lt; .10. <em>. p &lt; .05 <strong>. p &lt; .01. </strong></em>. p &lt; .001 ****.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Note. N = 7,447. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor.
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

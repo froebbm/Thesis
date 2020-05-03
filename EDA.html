@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Chapter 4:</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Development and Displacement</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="introduction.html">Introduction</a>
+</li>
+<li>
+  <a href="lit_review.html">Literature Review</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Chapter 4:</h1>
+<h3 class="subtitle">Exploratory Data Analysis</h3>
+
+</div>
+
+
+<p>Overall, the participants were low income, with a mean AGI of $15,398 (SD = $16,608) with values ranging from -$34,525 to $290,181. Income was positively skewed and had high variance. See Figure 1 below for a histogram of income. The mean age was roughly 43 years old (SD = 16.5) and most participants did not have any dependents (M = 0.58, SD = 0.88).</p>
+<p><br></p>
+<div class="figure">
+<img src="EDA_files/figure-html/Figure%201-1.png" alt="Note. AGIs less than 0 have been removed from the data to ensure readability" width="672" />
+<p class="caption">
+Note. AGIs less than 0 have been removed from the data to ensure readability
+</p>
+</div>
+<p>The mean permits issued within 1 km was 428 (SD = 388), permits issued within 0.5 km was 119 (SD = 119), and permits issued within 0.1km was 5 (SD = 6). Each variable was positively skewed, with a high variance. Figure 2 shows the distribution of number of permits issued within 1km after the removal of 4,609 observation with a count of 1. The 0.5 km and 0.1 km counts had a similar pattern of skewedness.</p>
+<div class="figure">
+<img src="EDA_files/figure-html/Figure%202-1.png" alt="Counts of 1 have been removed from the data to ensure readability." width="672" />
+<p class="caption">
+Counts of 1 have been removed from the data to ensure readability.
+</p>
+</div>
+<p>The high variation is likely a result of the uneven spatial distribution of permits, with building permits significantly more clustered around downtown Boston, Charlestown, and Southie. Figure 3 shows a kernel density estimation of issued building permits.</p>
+<p><img src="EDA_files/figure-html/Figure%203-1.png" width="672" /></p>
+<p>The mean number of crimes reported within 1 km was 2935 (SD = 2167), crimes reported within 0.5 km was 834 (SD = 633), and crimes reported within 0.1 km was 41 (SD = 43). Like the building permit data, the distribution of variable is positively skewed, with high variance. Figure 4 presents the distribution of number of crimes reported within 1km after the removal of 4,576 observation with a count of 1. The 0.5 km and 0.1 km counts had a similar pattern of skewedness. The high variance is likely a result of the uneven spatial distribution of crimes reported, with crimes reported significantly clustered around downtown Boston and spreading south to Dorchester and Roxbury, with a smaller cluster in Alston Brighton. Figure 5 shows a kernel density estimation of issued building permits.</p>
+<div class="figure">
+<img src="EDA_files/figure-html/Figure%204-1.png" alt="Counts of 1 have been removed from the data to ensure readability." width="672" />
+<p class="caption">
+Counts of 1 have been removed from the data to ensure readability.
+</p>
+</div>
+<p><img src="EDA_files/figure-html/Figure%205-1.png" width="672" /></p>
+<p>To estimate the rental prices for areas between the points collected as a part of Kaufman’s project, a rent surface was created. This surface uses the point values and statistical methods to estimate the areas where no data was collected, creating a map showing the estimated price per bedroom. The first step to creating a rent surface was normalizing the rental prices per bedroom. While rent per square foot is a more common measure, rent per bedroom has been used when square footage is not available (Foley et al., 2012; Gámez et al., 2000). For the sake of this normalization studio apartments, which were listed as zero bedrooms, were treated as one bedrooms.</p>
+<p>Prices were adjusted for inflation using the CPI method described earlier (Nau, 2014). In general, the price per bedroom appears to be increasing at a statistically significant rate each year, with an average rent of roughly $1,300 in 2011 and rising to roughly $1,800 in 2019. A linear trend estimation found this relationship to be statistically significant at the 0.05 level. Figure 6 below presents a summary of mean estimated rent price by year.</p>
+<p><img src="EDA_files/figure-html/Figure%206-1.png" width="672" /></p>
+<p>Empirical Bayesian kriging was chosen as the interpolation method for the rent surfaces as it provided the lowest Root Mean Square Error (RMSE) value, outperforming Ordinary Kriging and Inverse Distance Weighting. These processes were carried out in ArcMap 10.7. With the rent surfaces created, the residents and rent surfaces were loaded into R using the raster package and the residents had estimated rent values spatially extracted. The rent surfaces reveal that the increase in rental prices was not spatially uniform with the largest increases occurring in Southie, Charlestown, and Back Bay. Figure 7 presents each years’ rent surface, full size figures of each year are in Appendix A.</p>
+<p><img src="EDA_files/figure-html/Figure%207-1.gif" /><!-- --></p>
+<p>Across the state the number of evictions has risen dramatically since 2000, with dips around 2004 and 2009. This trend is presented in figure 8. The results of a linear trend estimation found this rise to be statistically significant at the 0.05 level. As with crime reports, building permits, and rental prices eviction also varied spatially. Global Mora’s I showed significant auto correlation (I = 0.40, p&lt;0.001), indicating that the values are spatially clustered. Figure 9 shows that more evictions were filled in Roxbury, Dorchester, Mattapan, Cambridge, Somerville, Jamaica Plain, and Hyde Park than other parts of greater Boston. Figure 10 shows that these areas were also experiencing an increase in the number of evictions filed every year, full size images of each year are found in Appendix B.</p>
+<p><img src="EDA_files/figure-html/Figure%208-1.png" width="672" /></p>
+<p><img src="EDA_files/figure-html/Figure%209-1.png" width="672" /></p>
+<p><img src="EDA_files/figure-html/Figure%2010-1.gif" /><!-- --></p>
+<p>To test for multicollinearity a correlation matrix was calculated for the continuous predictor variables in the study. These variables included income, change in income, age, number of dependents, permits issued, crimes reported, evictions filed, and estimated rent per bedroom. While many of the correlations were statistically significant, most fell between -0.1 and 0.1, and only five were higher than -0.5 or 0.5. A correlation matrix for predictor variables is presented in Table 2. While multicollinearity is likely not an issue with this data VIF were still calculated where appropriate.</p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+Table 2 Correlation Matrix Results
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+n
+</th>
+<th style="text-align:right;">
+M
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:left;">
+AGI
+</th>
+<th style="text-align:left;">
+Change.AGI
+</th>
+<th style="text-align:left;">
+Age
+</th>
+<th style="text-align:left;">
+Num.of.Dep
+</th>
+<th style="text-align:left;">
+Com.Perm.
+</th>
+<th style="text-align:left;">
+Res.Perm.
+</th>
+<th style="text-align:left;">
+Mix.Perm.
+</th>
+<th style="text-align:left;">
+Vio.Crimes
+</th>
+<th style="text-align:left;">
+Non.Crimes
+</th>
+<th style="text-align:left;">
+Evict.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AGI
+</td>
+<td style="text-align:left;">
+66,858
+</td>
+<td style="text-align:right;">
+21302.23
+</td>
+<td style="text-align:right;">
+19132.55
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Change.AGI
+</td>
+<td style="text-align:left;">
+66,858
+</td>
+<td style="text-align:right;">
+1269.08
+</td>
+<td style="text-align:right;">
+15100.04
+</td>
+<td style="text-align:left;">
+0.45**
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:left;">
+66,858
+</td>
+<td style="text-align:right;">
+44.44
+</td>
+<td style="text-align:right;">
+16.51
+</td>
+<td style="text-align:left;">
+0.02**
+</td>
+<td style="text-align:left;">
+-0.11**
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.of.Dep.
+</td>
+<td style="text-align:left;">
+66,812
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+<td style="text-align:left;">
+0.12**
+</td>
+<td style="text-align:left;">
+0.01*
+</td>
+<td style="text-align:left;">
+-0.12**
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Com.Perm.
+</td>
+<td style="text-align:left;">
+38,365
+</td>
+<td style="text-align:right;">
+20.41
+</td>
+<td style="text-align:right;">
+55.10
+</td>
+<td style="text-align:left;">
+-0.05**
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.06**
+</td>
+<td style="text-align:left;">
+-0.04**
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Res.Perm.
+</td>
+<td style="text-align:left;">
+38,365
+</td>
+<td style="text-align:right;">
+71.04
+</td>
+<td style="text-align:right;">
+57.00
+</td>
+<td style="text-align:left;">
+-0.04**
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.01**
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.13**
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mix.Perm.
+</td>
+<td style="text-align:left;">
+38,365
+</td>
+<td style="text-align:right;">
+22.25
+</td>
+<td style="text-align:right;">
+36.40
+</td>
+<td style="text-align:left;">
+-0.09**
+</td>
+<td style="text-align:left;">
+0.01
+</td>
+<td style="text-align:left;">
+0.07**
+</td>
+<td style="text-align:left;">
+-0.04**
+</td>
+<td style="text-align:left;">
+0.69**
+</td>
+<td style="text-align:left;">
+0.44**
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vio.Crimes
+</td>
+<td style="text-align:left;">
+38,360
+</td>
+<td style="text-align:right;">
+8.51
+</td>
+<td style="text-align:right;">
+11.83
+</td>
+<td style="text-align:left;">
+-0.11**
+</td>
+<td style="text-align:left;">
+-0.02**
+</td>
+<td style="text-align:left;">
+0.01
+</td>
+<td style="text-align:left;">
+0.01
+</td>
+<td style="text-align:left;">
+0.21**
+</td>
+<td style="text-align:left;">
+0.14**
+</td>
+<td style="text-align:left;">
+0.25**
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Non.Crimes
+</td>
+<td style="text-align:left;">
+38,360
+</td>
+<td style="text-align:right;">
+32.36
+</td>
+<td style="text-align:right;">
+33.18
+</td>
+<td style="text-align:left;">
+-0.08**
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.02**
+</td>
+<td style="text-align:left;">
+0.01
+</td>
+<td style="text-align:left;">
+0.31**
+</td>
+<td style="text-align:left;">
+0.24**
+</td>
+<td style="text-align:left;">
+0.37**
+</td>
+<td style="text-align:left;">
+0.77**
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Evict.
+</td>
+<td style="text-align:left;">
+45,075
+</td>
+<td style="text-align:right;">
+21.69
+</td>
+<td style="text-align:right;">
+15.27
+</td>
+<td style="text-align:left;">
+0.01
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+-0.04**
+</td>
+<td style="text-align:left;">
+0.05**
+</td>
+<td style="text-align:left;">
+-0.15**
+</td>
+<td style="text-align:left;">
+-0.09**
+</td>
+<td style="text-align:left;">
+-0.20**
+</td>
+<td style="text-align:left;">
+0.10**
+</td>
+<td style="text-align:left;">
+0.08
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rent
+</td>
+<td style="text-align:left;">
+35,490
+</td>
+<td style="text-align:right;">
+1222.51
+</td>
+<td style="text-align:right;">
+592.22
+</td>
+<td style="text-align:left;">
+-0.06**
+</td>
+<td style="text-align:left;">
+0.05**
+</td>
+<td style="text-align:left;">
+0.09**
+</td>
+<td style="text-align:left;">
+-0.05**
+</td>
+<td style="text-align:left;">
+0.52**
+</td>
+<td style="text-align:left;">
+0.11**
+</td>
+<td style="text-align:left;">
+0.63**
+</td>
+<td style="text-align:left;">
+0.21**
+</td>
+<td style="text-align:left;">
+0.2
+</td>
+<td style="text-align:left;">
+-0.26**
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> p &lt; .05. *. **p &lt; .001
+</td>
+</tr>
+</tfoot>
+</table></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><br></p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

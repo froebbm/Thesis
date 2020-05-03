@@ -1,0 +1,183 @@
+---
+title: "Chapter 5: Results"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+
+In this chapter I discuss the results of logistic regression models estimated with the outcome variable “moved” and the variables coved in Chapters 3 and 4 as the predictors. “Moved” was a binary variable with values of 0 representing a resident not moving between the origin and destination and 1 representing a resident who did move between the origin and destination. Several models were run using subsets of the full dataset to maximize the number of participants. The exact variables included in each model and the results are summarized in the next sections.
+
+Logistic regression results are presented in odds ratios instead of coefficients. Odds ratios represent the change in the odds of moving associated with a one unit increase of the explanatory variable. For example, if the number of dependents variable had an odds ratio of 1.50 it would represent an increase in the odds of moving of one and half for each additional dependent. For categorical variables the odds ratio represents the change in odds associated with belonging to a group. For example, if being African American had an odds ratio of 2.50 it would mean African Americans are two and half times more likely to move than other races. Coefficients represent a similar measure but are measured in log-odds which can make interpretation difficult (UCLA, 2020b). 
+
+# Tax Return Data
+
+## Model 1A
+
+The first model used income, filing status, age, and number of dependents available for all 66,858 observations in the study which resulted in many significant variables. However, this model was relatively weak with a pseudo r squared value of 0.016. Income (OR = 0.9999993), age (OR = 0.982), and filing as single (OR = 0.933) were all associated with decreased likelihood of moving, while filling as married filing separately (OR = 1.398) showed an increased likelihood. It is worth noting that while income had a significant effect it was relatively small. For every 1,000-dollar change in income the odds of moving only shifted by 0.07%.
+
+## Model 1B
+
+The second model used changes in income, changes in relationship status, and changes in number of dependents and provided a weaker model than 1A with a pseudo R squared of 0.010. However, the significant variables did have stronger effects. All were associated with increased likelihood of moving, with having entered or dissolved a relationship almost doubling the odds (Entering OR = 1.979 and Dissolving = 1.941). A one thousand dollar increase in income was associated with a 0.49% increase to the odds of moving (OR = 1.0000049). 
+
+## Model 1C
+
+When income, filing status, number of dependents, age, changes in income, changes in relationship status, and changes in numbers of dependents were run in one model only the filing status variables were insignificant. Controlling for changes in relationship status mitigated the effect of other filing status and they were dropped from future models. Additionally, controlling for changes to the number of dependents made the total number significant, likely because families with more children experience eviction at a higher rate (Desmond & Gershenson, 2017). Overall, this model was relatively weak with a pseudo R squared of 0.023. Table 3 presents the results of Models 1A, 1B, and 1C.
+
+```{r Table 3, echo=FALSE, warning=FALSE, message=FALSE}
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+Table3 <- read.csv("Table3.csv")
+library(knitr)
+library(dplyr)
+library(kableExtra)
+kable(Table3, caption = "Table 3 Tax Return Data",
+      col.names = c("Variable", "OR",	"SE",	"VIF",	"OR",	"SE",	"VIF",	"OR",	"SE",	"VIF")) %>%
+  kable_styling("striped", full_width = F) %>%
+    add_indent(3:6) %>%
+  add_header_above(c(" ", "Model 1A" = 3, "Model 1B" = 3, "Model 1C" = 3)) %>%
+  add_footnote(c("p < .10. *. p < .05 **. p < .01. ***. p < .001 ****.", "Note. N = 66,858. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. "), notation = "none")
+```
+
+# Survey Data
+
+Initial testing found only two of the education variables statistically significant, “no high school” and “GED.” To help interpretation, I collapsed this variable into a single variable, “graduated high school,” which was used in all future models. 
+
+African American residents and those who selected Other were both more likely to have moved (AA OR = 1.142, Other OR = 1.504), while white residents were less likely to have moved (OR = 0.799). Men were more likely to have moved than women (OR = 1.134), while identifying as trans had no significant effect. This could be caused by the relatively few people who identified as trans in this study, 654 out of 43,802. Disability status had no statistically significant effect on whether a resident moved. Graduating high school was associated with a decrease in move likelihood (OR = 0.918), while earning a higher degree was associated with an increase in move likelihood (OR = 1.264). The full results are summarized below in Table 4. 
+
+The pseudo R squared for these demographic variables was significantly higher than the tax data, 0.501 vs 0.023. This indicates that demographic factors are likely better at predicting movement behavior than economic and life course factors.
+
+```{r Table 4, echo=FALSE, warning=FALSE, message=FALSE}
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+Table4 <- read.csv("Table4.csv")
+Table4[1,3] <- ""
+Table4[10,3] <- ""
+Table4[14,3] <- ""
+Table4[17,3] <- ""
+
+library(knitr)
+library(dplyr)
+library(kableExtra)
+kable(Table4, caption = "Table 4 Demographic Factors") %>%
+  kable_styling("striped", full_width = F) %>%
+    add_indent(c(2:7, 11:13, 15:16)) %>%
+    add_footnote(c("*p < .10. **p < .05. ***p < .01. ****p < .001", "Note. N = 66,858. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. "), notation = "none")
+```
+
+# Spatial Variables
+
+## Bandwidth Determination
+
+According to pervious research the effects of new development level off after 1,320 ft or 402 meters. As stated in Chapter 3 bandwidths were set at 1 km, 0.5 km, and 0.1km for this study. To limit the effects of multicollinearity only one distance was chosen for each variable. Permits issued was significant at the 1 km and 0.5 km bandwidths, however the effect size was stronger at 0.5 km distance, in keeping with Tobler’s first law of geography, “nearer things are more related than distant things,” (Miller, 2004). Crimes reported was only significant at the 0.1 km distance. Table 5 summarizes these results.
+
+```{r Table 5, echo=FALSE, message=FALSE, warning=FALSE}
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+Table5 <- read.csv("Table5.csv")
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+Table5[3,3] <- " "
+Table5[3,4] <- " "
+Table5[3,6] <- " "
+Table5[3,7] <- " "
+Table5[3,9] <- " "
+Table5[3,10] <- " "
+
+kable(Table5, caption = "Table 5 Bandwidth Effects",
+      col.names = c("Variable", "OR",	"SE",	"VIF",	"OR",	"SE",	"VIF",	"OR",	"SE",	"VIF")) %>%
+  kable_styling("striped", full_width = F) %>%
+  add_header_above(c(" ", "Within 1.0 km" = 3, "Within 0.5 km" = 3, "Within 0.1 km" = 3)) %>%
+  add_footnote(c("p < .10. *. p < .05 **. p < .01. ***. p < .001 ****.", "Note. N = 38,358. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. "), notation = "none")
+```
+
+Additionally, tests were conducted to see if the different permit types, residential, commercial, and mixed use, and the nature of the crime, violent or non-violent, had significantly different effects. Every variable except for residential permits was significant and each variable had a different effect. Commercial permits and violent crimes increased move likelihood and non-violent crimes and mixed-use permits decreased move likelihood. Bandwidth tests were repeated to see if permit or crime type varied by distance, but results were identical to the total results and are not reported here. Lagged variables also had no significant effect on the OR values, the significance, or the pseudo R squared and were not used in future models.
+
+## Trend Surface
+
+To test for purely locational effects, a model was estimated using latitude and longitude as the only dependent variables. Only latitude was statistically significant and was associated with a decrease in the move likelihood of a resident. However, the pseudo R squared was -0.00001, meaning a regression with a constant as the only predictor was more accurate. Latitude and longitude were dropped from all other models and unfortunately other spatial models could not be estimated, see Chapter 7 for further explanation. The results of this trend surface analysis are presented in table 6. 
+
+```{r Table 6, echo=FALSE, message=FALSE, warning=FALSE}
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+Table6 <- read.csv("Table6.csv")
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+Table6[3,3] <- " "
+Table6[3,4] <- " "
+
+kable(Table6, caption = "Table 6 Trend Surface") %>%
+  kable_styling("striped", full_width = F) %>%
+  add_footnote(c("p < .10. *. p < .05 **. p < .01. ***. p < .001 ****.", "Note. N = 66,856. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. "), notation = "none")
+```
+
+## Permits, Evictions, and Rent
+
+Finally, a model was estimated using evictions per census tract, estimated rent per bedroom, and the crime and permit variables. All variables except residential permits were significant, with the crime and permit variables following the same pattern described earlier and rent (OR = 1.0002) and evictions (OR = 1.004) were both associated with an increased likelihood of moving. Specifically, a $1000 increase in per bedroom rent was associated with a 10.6% increase in move likelihood. Overall, these variables produced the strongest model of any individual set of variables (Pseudo – R2 = 0.772), which indicates that neighborhood characteristics are likely an important factor in why individuals and households choose to move. Table 7 summarizes all the model results for spatial variables.
+
+```{r Table 7}
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+Table7 <- read.csv("Table7.csv")
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+Table7[1,3] <- " "
+Table7[1,4] <- " "
+
+Table7[5,3] <- " "
+Table7[5,4] <- " "
+
+Table7[10,3] <- " "
+Table7[10,4] <- " "
+
+kable(Table7, caption = "Table 7 Spatial Variables") %>%
+  kable_styling("striped", full_width = F) %>%
+  add_indent(c(2:4, 6:7)) %>%
+  add_footnote(c("p < .10. *. p < .05 **. p < .01. ***. p < .001 ****.", "Note. N = 20,177. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. "), notation = "none")
+```
+
+# Full Model Results
+
+Combining the variables from previous models significantly reduced the sample sizes, from 20,177 to 7,447, but did provide the strongest model (Pseudo – R2 = 0.921). Additionally, there were no issues of multi-collinearity, with the highest VIF score only reaching 3.154 well under the threshold of 5. Due to the reduction in sample size the higher educational attainment achieved variable was dropped as all residents in the model had a value of “No”.
+
+With all other variables accounted for, only age and dissolving a relationship remained significant among the tax variables. Those who dissolved a relationship were almost two and half times more likely to move than those who did not (OR = 2.450). Older residents were less likely to move (OR = 0.978). Among the survey variables only graduating high school and being African American remained significant. African American’s were 32% more likely to move (OR = 1.320) and high school graduates were roughly 22% less likely to move (OR = 0.781). Violent and Non-Violent crime remained at roughly the same values from previous models and evictions and rent became insignificant. The permit variables, however, experienced some interesting changes.
+
+Accounting for all other variables only commercial permits within 0.5 km were statistically significant. Commercial permits were associated with a higher likelihood of moving with each additional permit increasing the likelihood of moving by 0.2%. This makes the household with the most commercial permits in this study 228% more likely to move than the household with the least permits, 1271 permits and 1 permit respectively.
+
+A random effects models was run with the glmmML package in R using the same data and found similar results. Most ORs only changed by a few thousandths and no variables changed in terms of significance. The random effects model did offer some improvement to the GLM model. A pseudo R squared could not be calculated as the log of the maximum likelihood value could not be extracted by any function in R or calculated by hand. The GLM model had an AIC of 5177.2 and the random effects model offered a modest improvement to 5149.0. A fixed effects model was also estimated, which had an AIC of 1072, but as described in Chapter 3 the fixed effects model was inappropriate for this data and likely inaccurate. Table 8 summarizes the GLM and random effects models.
+```{r Table 8, echo=FALSE, warning=FALSE, message=FALSE}
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+Table8 <- read.csv("Table8.csv")
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+Table8[9,3] <- " "
+Table8[9,4] <- " "
+Table8[9,6] <- " "
+
+Table8[17,3] <- " "
+Table8[17,4] <- " "
+Table8[17,6] <- " "
+
+Table8[21,3] <- " "
+Table8[21,4] <- " "
+Table8[21,6] <- " "
+
+Table8[24,3] <- " "
+Table8[24,4] <- " "
+Table8[24,6] <- " "
+
+Table8[28,3] <- " "
+Table8[28,4] <- " "
+Table8[28,6] <- " "
+
+kable(Table8, caption = "Table 8 Full Model Results",
+      col.names = c("Variable", "OR",	"SE",	"VIF", "OR",	"SE")) %>%
+  kable_styling("striped", full_width = F) %>%
+  add_indent(c(10:15, 18:20, 22:23, 25:27, 29:30)) %>%
+  add_header_above(c(" ", "General Linear Model" = 3, "Random Effects" = 2)) %>%
+  add_footnote(c("p < .10. *. p < .05 **. p < .01. ***. p < .001 ****.", "Note. N = 7,447. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. "), notation = "none")
+```

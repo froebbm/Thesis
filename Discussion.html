@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Chapter 6: Discussion</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Development and Displacement</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="introduction.html">Introduction</a>
+</li>
+<li>
+  <a href="lit_review.html">Literature Review</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Chapter 6: Discussion</h1>
+
+</div>
+
+
+<p>While residential, commercial, and mixed-use permits were all significantly correlated with increased rent, only commercial permits were significantly associated with a resident moving, with all else being equal. Even when examining permits in the context of other spatial variables residential permits were not significant while mixed-use permits were associated with a decreased likelihood of moving. This evidence does not support the hypothesis that increased housing development is associated with increased resident mobility.</p>
+<div id="amenities-housing-costs-and-neighborhood-change" class="section level1">
+<h1>Amenities, Housing Costs, and Neighborhood Change</h1>
+<p>Previous research on housing costs has focused on the role supply and demand plays in determining price. These theories suggest that the current housing crisis is caused by a scarcity of housing and that more housing will ultimately lower prices and solve the crisis (Pennington, 2018). However, some research suggests that access to amenities, not supply and demand, is the dominant factor in determining housing costs (Anenberg &amp; Kung, 2018; Kok et al., 2014; Lopez &amp; Greenlee, 2016).</p>
+<p>In these models, access to the most attractive amenities, like quality public transportation, public parks, school systems, labor markets, etc., significantly increased residents’ willingness to pay. This leads to higher prices in areas with easy access to these amenities (Anenberg &amp; Kung, 2018).</p>
+<p>An analysis of residential mobility following the closure of a supportive housing development found that residents could not afford to move into the neighborhoods surrounding the development (Lopez &amp; Greenlee, 2016). The residents’ new neighborhoods were significantly cheaper despite having similar housing stocks and demographics. The only significant differences between the neighborhoods was access to amenities, specially the downtown labor market and reliable public transportation (Lopez &amp; Greenlee, 2016).</p>
+<p>The results of this study seem to support these hypotheses, with all three types of development positively associated with estimated rent. Mixed-use and commercial showed the strongest correlation, Mixed-Use, r(34,556) = 0.63, p &lt; .001; Commercial, r(34,556) = 0.52, p &lt; .001, and Residential, r(34,556) = 0.11, p &lt; .001. Overall, the evidence suggests that development of amenities and other forms of commercial development, rather than residential development, are associated with increased likelihood of moving in Boston. Additionally, these results also do not support the hypothesis that building new housing lowers rent. These theories do not explain why residential permits, when significant, were associated with a decrease in move likelihood.</p>
+<p>One possible explanation relates to the popular definitions and media coverage of gentrification. While gentrification is hard to define quantitatively, it is generally defined as “the transformation of a working class area to a middle or high income area” especially though an influx of new affluent residents (Pennington, 2018). Generally these affluent residents move to the gentrifying area because the newly developed or renovated housing is significantly cheaper in this “up and coming neighborhood,” than the established affluent areas of the city (Desmond et al., 2015). This is the definition many news outlets use when covering gentrification (Jackson, 2018; Lord, 2017; Maciag, 2015). With the media narrative highlighting new housing development as the root cause of gentrification, many residents would associate housing development with gentrification.</p>
+<p>Previous research has shown that residents who believe their neighborhood is gentrifying are more likely to stay (Vigdor et al., 2002). One study conducted in 2004 by Freeman and Branconi found that gentrification led to significantly lower turnover among low-income households. They theorized that the benefits posed by remaining in a gentrifying or “revitalizing” neighborhood are so substantial that families would often make “greater efforts to remain in their dwelling units, even if the proportion of their income devoted to rent rises” (p. 51). A more recent study found similar results (Desmond &amp; Gershenson, 2017).</p>
+<p>One possible explanation of the difference between residential and commercial permits is that as new housing developments are put in low income residents put more of their income towards their rent. Eventually the influx of new, more affluent residents attracts the attention of commercial developers who flock to these areas and proceed to develop more amenities. This causes rents to rise at a significantly faster rate than the housing development finally making the neighborhood truly unaffordable to the previous residents. The former residents then move to areas with less amenities and less development. This could explain why estimated rent was insignificant in the final model. However, further research at a more granular temporal scale would be necessary to support his hypothesis.</p>
+<p>#Violent vs Non-Violent Crime</p>
+<p>Previous research has used crime rate per neighborhood or census tract as a proxy for how safe one may feel in their home. With those feeling unsafe being more likely to move to safer neighborhoods, assuming they can afford it (Desmond et al., 2015). By using non-aggregated data directly from the BPD, this research improves on previous models by using the direct location of crimes reported limiting any MAUP effects (Desmond et al., 2015; Desmond &amp; Gershenson, 2017; Park &amp; Kwan, 2018).</p>
+<p>Each non-violent crime increased the odds of a resident staying by roughly 1.3%, making the resident with the most non-violent crimes reported within 0.1 km roughly seven times more likely to not move than a resident with only one crime reported. Each violent crime reported increased the likelihood of a resident moving by roughly 2.3%, which makes the resident with the most violent crimes reported roughly six and half times more likely to move than a resident with only one crime reported.</p>
+<p>It is unsurprising that the effects of crime became more apparent and stronger as the bandwidth decreased. Crimes committed within 0.1 km of home, roughly 330 ft, are more likely to make residents feel unsafe than those committed within 1 km or 0.5 km (Barton et al., 2016). This may also explain the difference in effects between violent and non-violent crimes. Non-violent crimes, which included drug possession, fraud, gambling, truancy, and evading fare, are much less likely to make residents feel unsafe than violent crimes (Barton et al., 2016).</p>
+<p>Another possible explanation are variations between where violent and non-violent crimes occur. Research on crime has found that violent and non-violent crime have significantly differing spatial distributions, which are often based on socio-economic characteristics (Liu et al., 2016; Tita &amp; Greenbaum, 2009). It is possible that the two crime variables included in this model mitigated the effects of economic factors, such as rent and income causing them to be insignificant.</p>
+</div>
+<div id="life-cycle-factors" class="section level1">
+<h1>Life Cycle Factors</h1>
+<div id="educational-attainment" class="section level2">
+<h2>Educational Attainment</h2>
+<p>While achieving higher educational attainment had to be dropped from the final model it was significant in all previous models. Moving for educational opportunities, especially attending college or graduate school, or to access the specialized labor markets associated with increased educational attainment has long been associated with residential mobility (Mulder &amp; Malmberg, 2011). This is especially important in a city like Boston, one of the largest educational hubs in the United States. In 2010, Boston had 34% of Massachusetts’ college population enrolled in the 35 universities within city limits, while only having 10% of Massachusetts’ total population (Lima et al., 2011).</p>
+<p>Educational attainment was also a benefit to those who did not achieve higher education during the study. High school graduates were 22% less likely to have moved than those with no high school degree. The likely cause of this effect is the increased earning potential of those with degrees. A study by the Social Security Administration found that those with high school degrees made on average 350,000 more dollars over their lifespan than those without. This effect persisted when controlling for other socioeconomic factors (Research Summary, 2015). Those with a bachelor’s degree made 1.1 million more dollars than those without a high school diploma, and those with a graduate degree made 1.5 million more (Research Summary, 2015). The increased financial security granted by educational attainment likely translates into increased residential stability.</p>
+</div>
+<div id="age" class="section level2">
+<h2>Age</h2>
+<p>In this study older residents were less likely to move when compared to younger residents, consistent with the findings of previous research (Desmond et al., 2015; Mulder &amp; Malmberg, 2011). Though the relationship was not purely linear, with a rise in likelihood starting around 18 years old and leveling off at around 25 years old with a steady decline after that. This relationship is displayed in figure 11.</p>
+<p><img src="Discussion_files/figure-html/Figure%2011-1.png" width="672" /></p>
+</div>
+<div id="relationships" class="section level2">
+<h2>Relationships</h2>
+<p>Among life course and demographic factors, the single largest predictor of a resident moving was the dissolution of a relationship. Specifically, a divorce or separation as unmarried couples were not captured in tax return data. Residents who experienced a divorce were two and half times as likely to move as those who did not. This is likely caused by one partner seeking new housing while the other remains or both partners seeking new housing as neither could afford their old housing individually (Mulder &amp; Malmberg, 2011). While this focus on marriage does present a limitation as cohabitation among unmarried Americans is on the rise, the use of married couples is consistent with previous research designs (Gurrentz, 2018; Mulder &amp; Malmberg, 2011).</p>
+</div>
+</div>
+<div id="race" class="section level1">
+<h1>Race</h1>
+<p>African American’s were roughly 32% more likely to move than residents of another race. There are many possible explanations for this effect, from structural racism, intuitional inequality, increased development in African American neighborhoods, or Boston’s troubled history with its African American population.</p>
+<p>A study conducted by the Boston Globe’s Spotlight team revealed that 54% of Boston’s African American residents believe the city is unwelcoming to people of color. For comparison the same survey found that 28% of New York’s, 34% of Philadelphia’s, 38% of Charlotte’s, and 16% of Atlanta’s African American populations felt the same way about their cities (Pandey, 2017). It is worth noting that all these cities are significantly more diverse than Boston, where only 7% of the population is African American. It’s possible this perception of hostility is what caused African American residents to move, however without ethnographic research establishing this is impossible.</p>
+</div>
+<div id="policy-implications" class="section level1">
+<h1>Policy Implications</h1>
+<p>This research supports a wide range of policy actions that could be taken by Boston, and other municipalities, to increase residential stability and likely ease displacement. The most salient action is to remove or reduce legal limitations to housing development, especially multifamily housing development.</p>
+<div id="removing-limits-to-housing-development" class="section level2">
+<h2>Removing Limits to Housing Development</h2>
+<p>Boston significantly lags behind other major metropolitan areas in terms of housing production. In 2017 Boston issued 3.05 housing permits per every one thousand residents. For comparison Charlotte, NC issued 9.06 permits per one thousand and Portland, OR issued 6.52 per one thousand (Modestino et al., 2019). There are multiple factors that have limited housing production in the region but one is limiting housing production to single family homes. This limitation is often imposed because multifamily housing is seen as a “Locally Undesirable Land Uses” (LULUs) by citizen groups especially by “Not In My Backyard” (NIMBY) groups. NIMBY groups have been a mainstay of local politics for some time and are known to show up in droves at local planning board meetings looking to shut down any project they have deemed a LULU (Obrinsky &amp; Stein, 2007). NIMBY groups are effective at shutting down multifamily housing developments in Boston because of the land use regulations in the region (Modestino et al., 2019; Obrinsky &amp; Stein, 2007).</p>
+<p>In 2017, 132 of the 135 municipalities that make up Greater Boston allowed multifamily in their zoning codes. Of these 132, 76 allowed multifamily housing development “by right,” meaning if a development met all zoning requirements no additional appeals or permits were necessary (Modestino et al., 2019). In the remaining 56 communities, including Boston proper, multifamily housing is allowed “by special permit,” (Modestino et al., 2019). Special permits require local zoning or permitting boards to approve a special permit to allow a project to go though (Modestino et al., 2019). Because these meetings are open to the public NIMBYs and other concerned citizen groups can often successfully protest and have projects struck down (Obrinsky &amp; Stein, 2007). NIMBYs can also work in communities that have “by right” permitting should the development need a variance or other form of zoning relief. Zoning relief is necessary when a proposed project is slightly incompatible with existing zoning in “by right” communities (Modestino et al., 2019; Obrinsky &amp; Stein, 2007).</p>
+<p>Boston should not only become a fully “by right” community, it should follow in the footsteps of Minneapolis, MN and eliminate single family zoning. This would allow multifamily housing to be developed “by right” everywhere that single family housing was. Single family housing is often less restricted than multifamily housing and is almost never seen as a LULU (Kahlenberg, 2019; Obrinsky &amp; Stein, 2007). This should being removing racial and socioeconomic walls that have been built by exclusionary zoning practices (Kahlenberg, 2019). While the full effects of Minneapolis’ policies cannot be assessed yet, as it was only enacted in late 2019, implementing bold progressive policies are Boston’s best bet moving forward.</p>
+</div>
+<div id="build-supportive-housing" class="section level2">
+<h2>Build Supportive Housing</h2>
+<p>One limitation of this research was the inability to examine the effects of different kinds of housing development, e.g. luxury vs. market rate vs. below market rate vs. subsidized. However, previous research has examined such effects. A study by the Institute of Government Studies at the University of California – Berkeley found that while all housing development alleviates housing pressures, subsidized and supportive housings had more than double the effect of market rate housing (Zuk &amp; Chapple, 2016). This research was conducted in California, mostly in San Francisco, and the similarities between New England’s and California’s housing markets mean that the effect should hold in Boston (Modestino et al., 2019; Zuk &amp; Chapple, 2016). While Boston will probably never reach public housing on par with Vienna Austria, where 62% of residents live in public housing, increased investing in public and subsidized housing should only have positive effects (HUD USER, n.d.).</p>
+<p>One possible funding source for this public housing is the commercial developments that may be forcing people out and raising rent. There are two ways to extract this funding, one would be using impact fees and the other would be through Community Benefits Agreements (CBAs). Impact fees are payments made by a developer to a special fund set up by the municipality for “the purpose of providing new or expanded public capital facilities required to serve that development,” (APA, 1997). The other goal of impact fees is to offset the impacts of new development, including the impacts on current residents (APA, 1997). Under this framework a municipality could require impact fees that go into a special fund to finance an affordable housing initiative.</p>
+<p>CBAs are agreements between a developer and a community organization, usually a neighborhood organization or a community development corporation (CDC). CBAs, once signed, are enforceable like any other contract and allow communities to make demands of developers before projects are approved (SCC, 2019). A common request in CBAs for housing developers is a Set Aside Requirement, which sets aside a proportion of the development as either low income or subsidized housing (Boston DND, 2016; SCC, 2019). A CBA for a commercial developer could require a payment akin to an impact fee or a Set Aside Requirement for a certain amount of land for affordable housing development.</p>
+</div>
+<div id="addressing-racial-inequality" class="section level2">
+<h2>Addressing Racial Inequality</h2>
+<p>While it is unclear why the African American community is adversely affected by new development, the evidence is overwhelming (Maciag, 2015; Modestino et al., 2019; Pandey, 2017). While the previously suggested policies would likely mitigate some the disparate racial impact, specific policies to address racial inequality are required. These policies could include stricter zoning requirements in diverse neighborhoods to curb rampant speculation, transfer of development rights, or enterprise zones (City of Charlotte, n.d.; Gottlieb, n.d.). Further research would be required to discover what the underlying causal relationship is, and which policies would be most effective in minimizing the impact.</p>
+</div>
+<div id="building-better-transportation" class="section level2">
+<h2>Building Better Transportation</h2>
+<p>The Massachusetts Bay Transportation Authority’s (MBTA) Rail Vision initiative is likely to have a significant impact on housing throughout the Greater Boston region (MBTA, 2019). The Rail Vision initiative will see the MBTA expand the commuter rail services into new suburban areas while simultaneously electrify and increase service on key routes, with trains improving from once an hour to every fifteen minutes (Lisinski, 2019).</p>
+<p>If access to amenities, like public transportation, are the determining factor in housing prices the Rail Vision initiative will likely cause an increase in prices in these suburban communities. Likely through a mix of new transit-oriented development and increased access to the amenities in downtown Boston. This increase in access to downtown Boston should then lower prices in areas that already had access, as access is no longer the commodity it once was (Anenberg &amp; Kung, 2018; Lisinski, 2019). Further research should be conducted on the potential impacts of the Rail Vision initiative, though research will be difficult until concrete plans are proposed (Lisinski, 2019).</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

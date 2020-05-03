@@ -1,0 +1,4 @@
+Variable,OR,SE,VIF,OR,SE,VIF,OR,SE,VIF
+Permits Issued,1.000****,0,1.985,0.999****,0,1.603,1.003,0.003,1.118
+Crimes Reported,1,0,1.985,1,0,1.603,0.999****,0,1.118
+Pseudo -R2,0.542,,,0.542,,,0.542,,

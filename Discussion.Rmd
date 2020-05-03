@@ -1,0 +1,152 @@
+---
+title: "Chapter 6: Discussion"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+While residential, commercial, and mixed-use permits were all significantly correlated with increased rent, only commercial permits were significantly associated with a resident moving, with all else being equal. Even when examining permits in the context of other spatial variables residential permits were not significant while mixed-use permits were associated with a decreased likelihood of moving. This evidence does not support the hypothesis that increased housing development is associated with increased resident mobility. 
+
+# Amenities, Housing Costs, and Neighborhood Change
+
+Previous research on housing costs has focused on the role supply and demand plays in determining price. These theories suggest that the current housing crisis is caused by a scarcity of housing and that more housing will ultimately lower prices and solve the crisis (Pennington, 2018). However, some research suggests that access to amenities, not supply and demand, is the dominant factor in determining housing costs (Anenberg & Kung, 2018; Kok et al., 2014; Lopez & Greenlee, 2016). 
+
+In these models, access to the most attractive amenities, like quality public transportation, public parks, school systems, labor markets, etc., significantly increased residents’ willingness to pay. This leads to higher prices in areas with easy access to these amenities (Anenberg & Kung, 2018). 
+
+An analysis of residential mobility following the closure of a supportive housing development found that residents could not afford to move into the neighborhoods surrounding the development (Lopez & Greenlee, 2016). The residents’ new neighborhoods were significantly cheaper despite having similar housing stocks and demographics. The only significant differences between the neighborhoods was access to amenities, specially the downtown labor market and reliable public transportation (Lopez & Greenlee, 2016).
+
+The results of this study seem to support these hypotheses, with all three types of development positively associated with estimated rent. Mixed-use and commercial showed the strongest correlation, Mixed-Use, r(34,556) = 0.63, p < .001;  Commercial, r(34,556) = 0.52, p < .001, and Residential, r(34,556) = 0.11, p < .001. Overall, the evidence suggests that development of amenities and other forms of commercial development, rather than residential development, are associated with increased likelihood of moving in Boston. Additionally, these results also do not support the hypothesis that building new housing lowers rent. These theories do not explain why residential permits, when significant, were associated with a decrease in move likelihood. 
+
+One possible explanation relates to the popular definitions and media coverage of gentrification. While gentrification is hard to define quantitatively,  it is generally defined as “the transformation of a working class area to a middle or high income area” especially though an influx of new affluent residents (Pennington, 2018). Generally these affluent residents move to the gentrifying area because the newly developed or renovated housing is significantly cheaper in this “up and coming neighborhood,” than the established affluent areas of the city (Desmond et al., 2015). This is the definition many news outlets use when covering gentrification (Jackson, 2018; Lord, 2017; Maciag, 2015). With the media narrative highlighting new housing development as the root cause of gentrification, many residents would associate housing development with gentrification.
+
+Previous research has shown that residents who believe their neighborhood is gentrifying are more likely to stay (Vigdor et al., 2002). One study conducted in 2004 by Freeman and Branconi found that gentrification led to significantly lower turnover among low-income households. They theorized that the benefits posed by remaining in a gentrifying or “revitalizing” neighborhood are so substantial that families would often make “greater efforts to remain in their dwelling units, even if the proportion of their income devoted to rent rises” (p. 51). A more recent study found similar results (Desmond & Gershenson, 2017). 
+
+One possible explanation of the difference between residential and commercial permits is that as new housing developments are put in low income residents put more of their income towards their rent. Eventually the influx of new, more affluent residents attracts the attention of commercial developers who flock to these areas and proceed to develop more amenities. This causes rents to rise at a significantly faster rate than the housing development finally making the neighborhood truly unaffordable to the previous residents. The former residents then move to areas with less amenities and less development.  This could explain why estimated rent was insignificant in the final model. However, further research at a more granular temporal scale would be necessary to support his hypothesis.
+
+#Violent vs Non-Violent Crime
+
+Previous research has used crime rate per neighborhood or census tract as a proxy for how safe one may feel in their home. With those feeling unsafe being more likely to move to safer neighborhoods, assuming they can afford it (Desmond et al., 2015). By using non-aggregated data directly from the BPD, this research improves on previous models by using the direct location of crimes reported limiting any MAUP effects (Desmond et al., 2015; Desmond & Gershenson, 2017; Park & Kwan, 2018). 
+
+Each non-violent crime increased the odds of a resident staying by roughly 1.3%, making the resident with the most non-violent crimes reported within 0.1 km roughly seven times more likely to not move than a resident with only one crime reported. Each violent crime reported increased the likelihood of a resident moving by roughly 2.3%, which makes the resident with the most violent crimes reported roughly six and half times more likely to move than a resident with only one crime reported. 
+
+It is unsurprising that the effects of crime became more apparent and stronger as the bandwidth decreased. Crimes committed within 0.1 km of home, roughly 330 ft, are more likely to make residents feel unsafe than those committed within 1 km or 0.5 km (Barton et al., 2016). This may also explain the difference in effects between violent and non-violent crimes. Non-violent crimes, which included drug possession, fraud, gambling, truancy, and evading fare, are much less likely to make residents feel unsafe than violent crimes (Barton et al., 2016). 
+
+Another possible explanation are variations between where violent and non-violent crimes occur. Research on crime has found that violent and non-violent crime have significantly differing spatial distributions, which are often based on socio-economic characteristics (Liu et al., 2016; Tita & Greenbaum, 2009). It is possible that the two crime variables included in this model mitigated the effects of economic factors, such as rent and income causing them to be insignificant.
+
+# Life Cycle Factors
+
+## Educational Attainment
+
+While achieving higher educational attainment had to be dropped from the final model it was significant in all previous models. Moving for educational opportunities, especially attending college or graduate school, or to access the specialized labor markets associated with increased educational attainment has long been associated with residential mobility (Mulder & Malmberg, 2011). This is especially important in a city like Boston, one of the largest educational hubs in the United States. In 2010, Boston had 34% of Massachusetts’ college population enrolled in the 35 universities within city limits, while only having 10% of Massachusetts’ total population (Lima et al., 2011).
+
+Educational attainment was also a benefit to those who did not achieve higher education during the study. High school graduates were 22% less likely to have moved than those with no high school degree. The likely cause of this effect is the increased earning potential of those with degrees. A study by the Social Security Administration found that those with high school degrees made on average 350,000 more dollars over their lifespan than those without. This effect persisted when controlling for other socioeconomic factors (Research Summary, 2015). Those with a bachelor’s degree made 1.1 million more dollars than those without a high school diploma, and those with a graduate degree made 1.5 million more (Research Summary, 2015). The increased financial security granted by educational attainment likely translates into increased residential stability.
+
+## Age
+
+In this study older residents were less likely to move when compared to younger residents, consistent with the findings of previous research (Desmond et al., 2015; Mulder & Malmberg, 2011). Though the relationship was not purely linear, with a rise in likelihood starting around 18 years old and leveling off at around 25 years old with a steady decline after that. This relationship is displayed in figure 11.
+
+```{r Figure 11, echo=FALSE, message=FALSE, warning=FALSE}
+ library(ggplot2)
+ library(tidyverse)
+ library(spatialEco)
+ library(sp)
+ library(spatstat)
+ library(maptools)
+ library(raster)
+ library(sf)
+ library(tmap)
+ library(extrafont)
+ library(spdep)
+
+Regression_Data_Full <- openxlsx::read.xlsx("H:/Thesis/Tabular Data/Regression_Data_Final.xlsx")
+
+Regression_Data_Full$High_School_Grad <- NA
+Regression_Data_Full$High_School_Grad[Regression_Data_Full$Ed_Attain == "High School"] <- "Yes"
+Regression_Data_Full$High_School_Grad[Regression_Data_Full$Ed_Attain == "Some College"] <- "Yes"
+Regression_Data_Full$High_School_Grad[Regression_Data_Full$Ed_Attain == "No High School"] <- "No"
+Regression_Data_Full$High_School_Grad[Regression_Data_Full$Ed_Attain == "GED"] <- "No"
+Regression_Data_Full$High_School_Grad[Regression_Data_Full$Ed_Attain == "Some High School"] <- "No" 
+Regression_Data_Full$High_School_Grad[Regression_Data_Full$Ed_Attain == "College"] <- "Yes"
+Regression_Data_Full$High_School_Grad[Regression_Data_Full$Ed_Attain == "Advanced Degree"] <- "Yes" 
+ 
+
+Data_For_Full <- Regression_Data_Full[c("Anon_ID", "Moved", "Des_Deflated_AGI" , "Change_AGI" , "Des_Age" , "Entering_Relationship" , 
+                                          "Dissolution_of" , "Child_Aged_Out" , "Additional_Child" , "Des_Number.of.Dependents" ,
+                                          "Race" , "Ed_Attain" , "Disability_Status" , "Gender",
+                                          "Com_per_0.5km_one_year" , "Res_per_0.5km_one_year" , "Mix_per_0.5km_one_year" , 
+                                          "Violent_Crimes_0.1km_one_year" , "Non_Violent_Crimes_0.1km_one_year" , 
+                                          "evictions" , "Org_Est_Rent_Adj", "High_School_Grad")]
+Data_For_Full <- subset(Data_For_Full, complete.cases(Data_For_Full))
+Data_For_Full$Anon_ID <- as.factor(Data_For_Full$Anon_ID)
+
+#had to remove higher educational attainment as no one was included in the study with it.
+Full_GLM <- glm(Moved ~ 	Des_Deflated_AGI + Change_AGI + Des_Age + Entering_Relationship + 
+                  Dissolution_of + Child_Aged_Out + Additional_Child + Des_Number.of.Dependents +
+                  Race + High_School_Grad + Disability_Status + Gender +
+                  Com_per_0.5km_one_year + Res_per_0.5km_one_year + Mix_per_0.5km_one_year + 
+                  Violent_Crimes_0.1km_one_year + Non_Violent_Crimes_0.1km_one_year + 
+                  evictions + Org_Est_Rent_Adj,
+                family = binomial("logit"),  data = Regression_Data_Full)
+
+
+Predicted_Data <- cbind(Data_For_Full, predict(Full_GLM, Regression_Data_Full = Data_For_Full, type = "link", se = TRUE))
+  Predicted_Data <- within(Predicted_Data, {
+    PredictedProb <- plogis(fit)
+    LL <- plogis(fit - (1.96 * se.fit))
+    UL <- plogis(fit + (1.96 * se.fit))
+  })
+  
+  Predicted_Data_For_Plot <- Predicted_Data %>%
+    group_by(Des_Age) %>%
+    summarise_at(vars(PredictedProb, LL, UL), funs(mean(., na.rm=TRUE)))
+  
+ggplot(Predicted_Data_For_Plot, aes(x = Des_Age, y = PredictedProb)) + 
+    geom_ribbon(aes(ymin = LL,
+                    ymax = UL), fill = "purple", alpha = 0.5) + geom_line(aes(x = Des_Age),size = 1) +
+    labs(title = "Figure 11", subtitle = "Predicted Probability by Age", x = "Age", y = "Predicted Probability %") +
+    theme(plot.subtitle = element_text(size = 12, family = "Cambria"),
+          plot.title = element_text(size = 12, family = "Cambria", face = "bold"),
+          text = element_text(size = 12, family = "Cambria"))
+
+```
+
+## Relationships
+
+Among life course and demographic factors, the single largest predictor of a resident moving was the dissolution of a relationship. Specifically, a divorce or separation as unmarried couples were not captured in tax return data. Residents who experienced a divorce were two and half times as likely to move as those who did not. This is likely caused by one partner seeking new housing while the other remains or both partners seeking new housing as neither could afford their old housing individually (Mulder & Malmberg, 2011). While this focus on marriage does present a limitation as cohabitation among unmarried Americans is on the rise, the use of married couples is consistent with previous research designs (Gurrentz, 2018; Mulder & Malmberg, 2011).
+
+# Race
+
+African American’s were roughly 32% more likely to move than residents of another race. There are many possible explanations for this effect, from structural racism, intuitional inequality, increased development in African American neighborhoods, or Boston’s troubled history with its African American population. 
+
+A study conducted by the Boston Globe’s Spotlight team revealed that 54% of Boston’s African American residents believe the city is unwelcoming to people of color. For comparison the same survey found that 28% of New York’s, 34% of Philadelphia’s, 38% of Charlotte’s, and 16% of Atlanta’s African American populations felt the same way about their cities (Pandey, 2017). It is worth noting that all these cities are significantly more diverse than Boston, where only 7% of the population is African American. It’s possible this perception of hostility is what caused African American residents to move, however without ethnographic research establishing this is impossible.
+
+# Policy Implications
+
+This research supports a wide range of policy actions that could be taken by Boston, and other municipalities, to increase residential stability and likely ease displacement. The most salient action is to remove or reduce legal limitations to housing development, especially multifamily housing development.
+
+## Removing Limits to Housing Development
+
+Boston significantly lags behind other major metropolitan areas in terms of housing production. In 2017 Boston issued 3.05 housing permits per every one thousand residents. For comparison Charlotte, NC issued 9.06 permits per one thousand and Portland, OR issued 6.52 per one thousand (Modestino et al., 2019). There are multiple factors that have limited housing production in the region but one is limiting housing production to single family homes. This limitation is often imposed because multifamily housing is seen as a “Locally Undesirable Land Uses” (LULUs) by citizen groups especially by “Not In My Backyard” (NIMBY) groups. NIMBY groups have been a mainstay of local politics for some time and are known to show up in droves at local planning board meetings looking to shut down any project they have deemed a LULU (Obrinsky & Stein, 2007). NIMBY groups are effective at shutting down multifamily housing developments in Boston because of the land use regulations in the region (Modestino et al., 2019; Obrinsky & Stein, 2007).
+
+In 2017, 132 of the 135 municipalities that make up Greater Boston allowed multifamily in their zoning codes. Of these 132, 76 allowed multifamily housing development “by right,” meaning if a development met all zoning requirements no additional appeals or permits were necessary (Modestino et al., 2019). In the remaining 56 communities, including Boston proper, multifamily housing is allowed “by special permit,” (Modestino et al., 2019). Special permits require local zoning or permitting boards to approve a special permit to allow a project to go though (Modestino et al., 2019). Because these meetings are open to the public NIMBYs and other concerned citizen groups can often successfully protest and have projects struck down (Obrinsky & Stein, 2007). NIMBYs can also work in communities that have “by right” permitting should the development need a variance or other form of zoning relief. Zoning relief is necessary when a proposed project is slightly incompatible with existing zoning in “by right” communities (Modestino et al., 2019; Obrinsky & Stein, 2007).
+
+Boston should not only become a fully “by right” community, it should follow in the footsteps of Minneapolis, MN and eliminate single family zoning. This would allow multifamily housing to be developed “by right” everywhere that single family housing was. Single family housing is often less restricted than multifamily housing and is almost never seen as a LULU (Kahlenberg, 2019; Obrinsky & Stein, 2007). This should being removing racial and socioeconomic walls that have been built by exclusionary zoning  practices (Kahlenberg, 2019). While the full effects of Minneapolis’ policies cannot be assessed yet, as it was only enacted in late 2019, implementing bold progressive policies are Boston’s best bet moving forward.
+
+## Build Supportive Housing
+
+One limitation of this research was the inability to examine the effects of different kinds of housing development, e.g. luxury vs. market rate vs. below market rate vs. subsidized. However, previous research has examined such effects. A study by the Institute of Government Studies at the University of California – Berkeley found that while all housing development alleviates housing pressures, subsidized and supportive housings had more than double the effect of market rate housing (Zuk & Chapple, 2016). This research was conducted in California, mostly in San Francisco, and the similarities between New England’s and California’s housing markets mean that the effect should hold in Boston (Modestino et al., 2019; Zuk & Chapple, 2016). While Boston will probably never reach public housing on par with Vienna Austria, where 62% of residents live in public housing, increased investing in public and subsidized housing should only have positive effects (HUD USER, n.d.).
+
+One possible funding source for this public housing is the commercial developments that may be forcing people out and raising rent. There are two ways to extract this funding, one would be using impact fees and the other would be through Community Benefits Agreements (CBAs). Impact fees are payments made by a developer to a special fund set up by the municipality for “the purpose of providing new or expanded public capital facilities required to serve that development,” (APA, 1997). The other goal of impact fees is to offset the impacts of new development, including the impacts on current residents (APA, 1997). Under this framework a municipality could require impact fees that go into a special fund to finance an affordable housing initiative. 
+
+CBAs are agreements between a developer and a community organization, usually a neighborhood organization or a community development corporation (CDC). CBAs, once signed, are enforceable like any other contract and allow communities to make demands of developers before projects are approved (SCC, 2019). A common request in CBAs for housing developers is a Set Aside Requirement, which sets aside a proportion of the development as either low income or subsidized housing (Boston DND, 2016; SCC, 2019). A CBA for a commercial developer could require a payment akin to an impact fee or a Set Aside Requirement for a certain amount of land for affordable housing development.
+
+## Addressing Racial Inequality
+
+While it is unclear why the African American community is adversely affected by new development, the evidence is overwhelming (Maciag, 2015; Modestino et al., 2019; Pandey, 2017).  While the previously suggested policies would likely mitigate some the disparate racial impact, specific policies to address racial inequality are required. These policies could include stricter zoning requirements in diverse neighborhoods to curb rampant speculation, transfer of development rights, or enterprise zones (City of Charlotte, n.d.; Gottlieb, n.d.). Further research would be required to discover what the underlying causal relationship is, and which policies would be most effective in minimizing the impact.
+
+## Building Better Transportation
+
+The Massachusetts Bay Transportation Authority’s (MBTA) Rail Vision initiative is likely to have a significant impact on housing throughout the Greater Boston region (MBTA, 2019). The Rail Vision initiative will see the MBTA expand the commuter rail services into new suburban areas while simultaneously electrify and increase service on key routes, with trains improving from once an hour to every fifteen minutes (Lisinski, 2019). 
+
+If access to amenities, like public transportation, are the determining factor in housing prices the Rail Vision initiative will likely cause an increase in prices in these suburban communities. Likely through a mix of new transit-oriented development and increased access to the amenities in downtown Boston. This increase in access to downtown Boston should then lower prices in areas that already had access, as access is no longer the commodity it once was (Anenberg & Kung, 2018; Lisinski, 2019). Further research should be conducted on the potential impacts of the Rail Vision initiative, though research will be difficult until concrete plans are proposed (Lisinski, 2019).

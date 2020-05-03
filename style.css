@@ -1,0 +1,10 @@
+img {
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+.animated-gif {
+  width: 400px;
+  height: auto;
+}

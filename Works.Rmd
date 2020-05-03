@@ -1,0 +1,164 @@
+---
+title: "Works Cited"
+output: 
+  html_document
+---
+About Us – Boston Tax Help Coalition. (2020). https://www.bostontaxhelp.org/about-us/
+
+Anenberg, E., & Kung, E. (2018). Can more housing supply solve the affordability crisis? Evidence from a neighborhood choice model—ScienceDirect. Regional Science and Urban Economics, 80. https://www.sciencedirect.com/science/article/pii/S0166046217304283
+
+APA. (1997). APA Policy Guide on Impact Fees. American Planning Association. https://www.planning.org/policy/guides/adopted/impactfees.htm
+
+Baker, A. C. (2014). Eroding the Wealth of Women: Gender and the Subprime Foreclosure Crisis. Social Service Review, 88(1), 59–91. https://doi.org/10.1086/675391
+
+Barton, M. S., Weil, F., Jackson, M., & Hickey, D. A. (2016). An Investigation of the Influence of the Spatial Distribution of Neighborhood Violent Crime on Fear of Crime: Crime & Delinquency. https://doi.org/10.1177/0011128716671874
+
+Boston DND. (2016, July 25). Neighborhood Development Housing Policies. Boston Department of Neighborhood Development. https://www.boston.gov/departments/neighborhood-development/neighborhood-development-housing-policies
+
+Boulay, G. (2012). Real estate market and urban transformations: Spatio-temporal analysis of house price increase in the centre of Marseille (1996-2010). Articulo - Journal of Urban Research, 9. https://doi.org/10.4000/articulo.2152
+
+Bousquet, C. (2017). Using Mapping to Understand Gentrification, Prevent Displacement. Government Technology. https://www.govtech.com/data/Using-Mapping-to-Understand-Gentrification-Prevent-Displacement.html
+
+Chalabi, M. (2015, January 29). How Many Times Does The Average Person Move? FiveThirtyEight. https://fivethirtyeight.com/features/how-many-times-the-average-person-moves/
+
+City of Charlotte. (n.d.). Opportunity Zones. City of Charlotte Government. Retrieved April 9, 2020, from https://charlottenc.gov/ED/Development
+
+Corriston, B., Dungey, M., Fung, K. L., & Zhong, L. (2017). Analyzing Risk of Displacement and Affordable Housing Opportunities in Southwest Boston. Tufts Digital Library. http://130.64.212.216/catalog/tufts:32198
+
+Coulton, C., Theodos, B., & Turner, M. A. (2012). Residential Mobility and Neighborhood Change: Real Neighborhoods Under the Microscope. Cityscape, 14(3), 36.
+
+Desmond, M. (2012). Eviction and the Reproduction of Urban Poverty. American Journal of Sociology, 46.
+
+Desmond, M. (2016). MARS User’s Guide.pdf. Harvard Dataverse. https://doi.org/10.7910/DVN/BLUU3U/IUXSBR
+
+Desmond, M. (2018). Heavy is the House: Rent Burden among the American Urban Poor. International Journal of Urban and Regional Research, 42(1), 160–170. https://doi.org/10.1111/1468-2427.12529
+
+Desmond, M., An, W., Winkler, R., & Ferriss, T. (2013). Evicting Children. Social Forces, 92(1), 303–327. https://doi.org/10.1093/sf/sot047
+
+Desmond, M., & Gershenson, C. (2017). Who gets evicted? Assessing individual, neighborhood, and network factors. Social Science Research, 62, 362–377. https://doi.org/10.1016/j.ssresearch.2016.08.017
+
+Desmond, M., Gershenson, C., & Kiviat, B. (2015). Forced Relocation and Residential Instability among Urban Renters. Social Service Review, 89(2), 227–262. https://doi.org/10.1086/681091
+
+Desmond, M., Gromis, A., Edmonds, L., Hendrickson, J., Krywokulski, K., Leung, L., & Porton, A. (2018). Eviction Lab Methodology Report: Version 1.0. Princeton University. https://evictionlab.org/methods/
+
+Dobbin, F., Simmons, B., & Garrett, G. (2007). The Global Diffusion of Public Policies: Social Construction, Coercion, Competition, or Learning? Annual Review of Sociology, 33(1), 449–472. https://doi.org/10.1146/annurev.soc.33.090106.142507
+
+Easton, S., Lees, L., Hubbard, P., & Tate, N. (2019). Measuring and mapping displacement: The problem of quantification in the battle against gentrification. Urban Studies, 0042098019851953. https://doi.org/10.1177/0042098019851953
+
+Fischer, P. A., & Malmberg, G. (2001). Settled People Don’t Move: On Life Course and (Im-)Mobility in Sweden. International Journal of Population Geography, 7(5), 357–371. https://doi.org/10.1002/ijpg.230
+
+Fligstein, N. (1996). Markets as Politics: A Political-Cultural Approach to Market Institutions. American Sociological Review, 61(4), 656. https://doi.org/10.2307/2096398
+
+Foley, K., Graham, J., Edwards, M., Olson, J., Lewis, M., & Dennis, L. (2012). Estimating rental housing prices using kriging interpolation. Oregon State University. http://gsp.humboldt.edu/jimsprofessional/StudentPosters/Foley.pdf
+
+Fotheringham, A., & Rogerson, P. (2009). The SAGE Handbook of Spatial Analysis. SAGE Publications, Ltd. https://doi.org/10.4135/9780857020130
+
+Freeman, L. (2005). Displacement or Succession?: Residential Mobility in Gentrifying Neighborhoods. Urban Affairs Review, 40(4), 463–491. https://doi.org/10.1177/1078087404273341
+
+Freeman, L., & Braconi, F. (2004). Gentrification and Displacement New York City in the 1990s. Journal of the American Planning Association, 70(1), 39–52. https://doi.org/10.1080/01944360408976337
+
+Gámez, M., Montero, J., & Rubio, N. (2000). Kriging methodology for regional economic analysis: Estimating the housing price in Albacete. International Advances in Economic Research, 6, 438–450. https://doi.org/10.1007/BF02294963
+
+Gottlieb, P. (n.d.). What Is a Transfer of Development Rights (TDR) Program? Rutgers University. Retrieved April 9, 2020, from https://njaes.rutgers.edu/highlands/transfer-development-rights.php
+
+Greenleaf, J. (2020). LibGuides: Urban Studies & Planning: Real Estate & Housing. https://libguides.mit.edu/urban/realestate
+
+Gurrentz, B. (2018). For Young Adults, Cohabitation Is Up, Marriage Is Down. https://www.census.gov/library/stories/2018/11/cohabitaiton-is-up-marriage-is-down-for-young-adults.html
+
+Heckman, E. (2015). What in the World Is a VIF? https://blog.minitab.com/blog/starting-out-with-statistical-software/what-in-the-world-is-a-vif
+
+Hornbeck, R., & Keniston, D. (2017). Creative Destruction: Barriers to Urban Growth and the Great Boston Fire of 1872. American Economic Review, 107(6), 1365–1398. https://doi.org/10.1257/aer.20141707
+
+HUD. (2018). Displacement of Lower-Income Families in Urban Areas Report. 26.
+
+HUD USER. (n.d.). Vienna’s Unique Social Housing Program [Government]. Housing and Urban Development. Retrieved April 9, 2020, from https://www.huduser.gov/portal/pdredge/pdr_edge_featd_article_011314.html
+
+Jackson, C. (2018). Is This Oakland Developer Building Sorely Needed Housing—Or Dropping Gentrification Bombs? San Francisco Magazine. https://civicas.net/news-blog/2018/5/29/is-this-oakland-developer-building-sorely-needed-housingor-dropping-gentrification-bombs
+
+Kahlenberg, R. (2019, October 24). How Minneapolis Ended Single-Family Zoning. The Century Foundation. https://tcf.org/content/report/minneapolis-ended-single-family-zoning/
+
+Kaufman, J. (2015). Boston Apartment Price Map: Details. https://www.jefftk.com/apartment_prices/details
+
+Kok, N., Monkkonen, P., & Quigley, J. M. (2014). Land use regulations and the value of land and housing: An intra-metropolitan analysis. Journal of Urban Economics, 81, 136–148. https://doi.org/10.1016/j.jue.2014.03.004
+
+Lempert, R., & Monsma, K. (1994). Cultural Differences and Discrimination: Samoans Before a Public Housing Eviction Board. American Sociological Review, 59(6), 890–910. JSTOR. https://doi.org/10.2307/2096374
+
+Lima, A., Melnik, M., Perkins, G., Blake, N., & Borella, N. (2011). Boston by the Numbers Colleges and Universities. http://www.bostonplans.org/getattachment/1770c181-7878-47ab-892f-84baca828bf3
+
+Lisinski, C. (2019). MBTA Board Commits To Reimagined Commuter Rail System. WBUR.Org. https://www.wbur.org/bostonomix/2019/11/04/mbta-regional-rail-electric-trains
+
+Liu, D., Song, W., & Xiu, C. (2016). Spatial patterns of violent crimes and neighborhood characteristics in Changchun, China. Australian & New Zealand Journal of Criminology, 49(1), 53–72. https://doi.org/10.1177/0004865814547133
+
+Logan, J., & Molotch, H. (2007). Urban Fortunes. https://www.ucpress.edu/book/9780520254282/urban-fortunes
+
+Lopez, E., & Greenlee, A. (2016). An ex-ante analysis of housing location choices due to housing displacement: The case of Bristol Place. Applied Geography, 75, 156–175. https://doi.org/10.1016/j.apgeog.2016.08.013
+
+Lord, T. (2017, May 20). Why ABAG housing quotas lead to displacement. 48 Hills. https://48hills.org/2017/05/why-housing-quotas-lead-to-displacement/
+
+Maciag, M. (2015). Gentrification in America Report. https://www.governing.com/gov-data/census/gentrification-in-cities-governing-report.html
+
+Marcuse, P. (1986). Gentrification, Abandonment, and Displacement: Connections, Causes, and Policy Responses in New York City. Journal of Urband and Contemporary Law, 28, 47.
+
+Massey, D. S., Rugh, J. S., & Pren, K. A. (2010). The Geography of Undocumented Mexican Migration. Mexican Studies/Estudios Mexicanos, 26(1), 129–152. https://doi.org/10.1525/msem.2010.26.1.129
+
+Mateyka, P. (2015). Desire to Move and Residential Mobility: 2010-2011. US Census, P40(140), 20.
+
+MBTA. (2019). Rail Vision | Projects | MBTA. MBTA Projects. https://www.mbta.com/projects/rail-vision
+
+Miller, H. J. (2004). Tobler’s First Law and Spatial Analysis. Annals of the Association of American Geographers, 94(2), 284–289. JSTOR.
+
+Modestino, A., Ziegler, C., Hopper, T., Clark, C., Munson, L., Melnik, M., Bernstein, C., & Raisz, A. (2019). The Greater Boston Housing Report Card 2019: Supply, Demand and the Challenge of Local Control (No. 16; Greater Boston Housing Report Card, p. 121). The Boston Foundation.
+
+Mulder, C., & Malmberg, G. (2011). Moving Related to Separation: Who Moves and to What Distance—Clara H Mulder, Gunnar Malmberg, 2011. Environment and Planning A: Economy and Space, 43(11). https://journals.sagepub.com/doi/10.1068/a43609
+
+Nau, R. (2014). Principles and risks of forecasting. Duke Univeristy, Fuqua School of Buisness, 9.
+
+Newman, K., & Wyly, E. K. (2006). The Right to Stay Put, Revisited: Gentrification and Resistance to Displacement in New York City. Urban Studies, 43(1), 23–57. https://doi.org/10.1080/00420980500388710
+
+Obrinsky, M., & Stein, D. (2007). Overcoming Opposition to Multifamily Rental Housing. Joint Center for Housing Studies, 27.
+
+Openshaw, S. (1984). Ecological Fallacies and the Analysis of Areal Census Data. Environment and Planning A: Economy and Space, 16(1), 17–31. https://doi.org/10.1068/a160017
+
+Pandey, E. (2017). The state of racial inequality in 12 major U.S. cities. Axios. https://www.axios.com/the-state-of-racial-inequality-in-majo-1512923360-77de9cc0-0ac5-4560-b6a1-80d5fb6e14bd.html
+
+Park, Y. M., & Kwan, M.-P. (2018). Beyond residential segregation: A spatiotemporal approach to examining multi-contextual segregation. Computers, Environment and Urban Systems, 71, 98–108. https://doi.org/10.1016/j.compenvurbsys.2018.05.001
+
+Pendall, R. J., Nelson, A. C., Dawkins, C. J., & Knaap, G. J. (2006). Connecting smart growth, housing affordability, and racial equity. The Geography of Opportunity: Race and Housing Choice in Metropolitan America, 219–246.
+
+Pennington, K. (2018). The Impact of Housing Production on Legal Eviction in San Francisco [Thesis]. University of California, Berkeley.
+
+Phinney, R. (2013). Exploring Residential Mobility among Low-Income Families. Social Service Review, 87(4), 780–815. https://doi.org/10.1086/673963
+
+Redding, S., & Sturm, D. M. (2016). Estimating Neighborhood Effects: Evidence from War-time Destruction in London ∗ | Semantic Scholar. Princenton University, Mimeograph. https://www.semanticscholar.org/paper/Estimating-Neighborhood-Effects-%3A-Evidence-from-in-Redding/30ac196f987a47e087697bc2e2daba43ab73a95b
+
+Research Summary: Education and Lifetime Earnings. (2015). https://www.ssa.gov/policy/docs/research-summaries/education-earnings.html
+
+Rodrıguez, G. (2012). Models for Longitudinal and Clustered Data. Princeton University. https://pdfs.semanticscholar.org/222e/3781f2ce19935b6faf2240b11964a7b231e8.pdf
+
+Rugh, J. S. (2015). Double Jeopardy: Why Latinos Were Hit Hardest by the US Foreclosure Crisis. Social Forces, 93(3), 1139–1184. https://doi.org/10.1093/sf/sou107
+
+SCC, S. (2019). National Examples of Community Benefits Agreements (CBAs). http://somervillecdc.org/sites/default/files/scc-minimal/files/national_examples_of_community_benefits_agreements_cbas.pdf
+
+Sugrue, T. (2014). The Origins of the Urban Crisis. https://press.princeton.edu/books/paperback/9780691162553/the-origins-of-the-urban-crisis
+
+Tita, G. E., & Greenbaum, R. T. (2009). Crime, Neighborhoods, and Units of Analysis: Putting Space in Its Place. In D. Weisburd, W. Bernasco, & G. J. N. Bruinsma (Eds.), Putting Crime in its Place: Units of Analysis in Geographic Criminology (pp. 145–170). Springer. https://doi.org/10.1007/978-0-387-09688-9_7
+
+UCLA. (2020a). FAQ: What are pseudo R-squareds? UCLA Statistical Consulting Group. https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/
+
+UCLA. (2020b). Logistic Regression Analysis | Stata Annotated Output. UCLA Statistical Consulting Group. https://stats.idre.ucla.edu/stata/output/logistic-regression-analysis/
+
+Uniform Crime Reporting (UCR) Program—FBI. (2020). https://www.fbi.gov/services/cjis/ucr/
+
+US Census, B. (2019). ZIP Code Tabulation Areas (ZCTAs). https://www.census.gov/programs-surveys/geography/guidance/geo-areas/zctas.html
+
+Vigdor, J. L., Massey, D. S., & Rivlin, A. M. (2002). Does Gentrification Harm the Poor? [With Comments]. Brookings-Wharton Papers on Urban Affairs, 133–182. JSTOR.
+
+Volunteer Income Tax Assistance (VITA) | Benefits.gov. (2020). https://www.benefits.gov/benefit/1543
+
+Williams, K. (2015). Toward a Universal Operationalization of Gentrification. Sociation Today, 13(2). http://www.ncsociology.org/sociationtoday/v132/gentrification.html
+
+Williams, R. (2018). Panel Data 4: Fixed Effects vs Random Effects Models. University of Notre Dame. https://www3.nd.edu/~rwilliam/stats3/panel04-fixedvsrandom.pdf
+
+Wong, D. (2009). The Modifiable Areal Unit Problem (MAUP). In A. Fotheringham & P. Rogerson, The SAGE Handbook of Spatial Analysis (pp. 104–123). SAGE Publications, Ltd. https://doi.org/10.4135/9780857020130.n7
+
+Zuk, M., & Chapple, K. (2016). Housing Production, Filtering and Displacement: Untangling the Relationships. 12.

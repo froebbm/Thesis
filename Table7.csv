@@ -1,0 +1,11 @@
+Variable,OR,SE,VIF
+Within 0.5 km,,,
+    Commercial Permits,1.002****,0,1.969
+    Residential Permits,0.999,0,1.299
+    Mixed Use Permits,0.997***,0.001,3.096
+Within 0.1 km,,,
+    Violent Crimes Reported,1.021****,0.003,2.575
+    Non-Violent Crimes Reported,0.991****,0.001,2.809
+Evictions in Census Tract,1.004***,0.001,1.115
+Estimated Rent Per Bedroom,1.000***,0,1.814
+Pseudo -R2,0.772,,

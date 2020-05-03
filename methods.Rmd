@@ -1,0 +1,69 @@
+---
+title: "Chapter 3: Data, Data Preparation, and Methods"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+
+The Boston Tax Help Coalition (BTHC) is a partnership of non-profits, local businesses, and community organizations led by the Boston Planning and Development Agency (BPDA) and the Mayor’s Office of Financial Empowerment. The goal of the BTHC and the Mayor’s Office of Financial Empowerment is to promote the economic independence of working families and encourage economic growth among Boston’s low-income residents though free tax preparation and financial counseling (About Us – Boston Tax Help Coalition, 2020). The BTHC tax preparation is carried out though the Internal Revenue Service’s (IRS) Volunteer Income Tax Assistance (VITA) program, where IRS trained volunteers provide free tax return preparation and electronic filing (Volunteer Income Tax Assistance (VITA) | Benefits.gov, 2020). 
+
+The BTHC has been in operation since 2001 and has stored data from these tax returns from 2005 to 2019, except for 2011. BTHC data from 2011 was unintentionally deleted from their server due to data mismanagement and could not be used in the study. Residents using BTHC services were assigned an anonymous ID that allowed changes in their data to be tracked over time. This included a resident’s current addresses which allowed a resident’s movement over time to be mapped. Other data taken from tax returns includes adjusted gross income (AGI), age, filing status, and number of dependents. Additionally, residents were asked to fill out survey for demographic information including race, level of education, disability status, and gender.
+
+In total there were 25,339 residents included in the BTHC data. These residents were grouped into 66,858 origin destination (OD) pairs. Origin destination pairs is a data format where each observation has two sets of variables corresponding to two locations or points in time. In this data each resident had data from two addresses representing two consecutive visits to the BTHC.
+
+# BTHC Data
+
+The variables taken directly from the tax returns such as AGI, number of dependents, filing status, and age were available for every OD pair in the data and were cleaned. The AGIs were adjusted for inflation to 2019 dollars using the Consumer Price Index (CPI) to allow for direct comparisons of income (Nau, 2014). Additionally, a new variable “change in income” was calculated by subtracting the origin AGI from the destination AGI. The “change in income” variable could stand in as a proxy for changes in employment status, such as suffering a job loss or receiving a promotion, which could be associated with mobility (Desmond, 2012). 
+
+Using the number of dependents two additional variables were created, having an additional child or whether a resident became an “empty nester.” In total, 3984 residents had an additional child and 3938 became “empty nester.” While these are not perfect proxies as many children leave the house while still being dependents on their parents taxes, they do allow for common life course reasons for moving to be controlled for (Mulder & Malmberg, 2011). 
+
+Filing status was used to create proxy variables for marital status. If a resident moved from any filing status to “married, filing jointly” or “married, filing separately” they were coded as having gotten married. Inversely, if any resident moved from “married, filing jointly” or “married, filing separately” to any other filing status they were coded as having experienced a dissolution of a romantic relationship. Overall, 1031 residents got married and 747 residents experienced a dissolution. The biggest limitation to this variable is that it does not capture any form of cohabitation, which has become increasingly common in the US (Gurrentz, 2018).
+
+The survey variables all had varying response rates, with disability status having the highest at 73.87% and educational attainment having the lowest at 54.96%. Overall, the residents were predominantly African American, had graduated high school, were not disabled, and female, see table 1 below for a summary. 
+
+```{r Table 1, echo=FALSE, message=FALSE, warning=FALSE}
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+Table1 <- read.csv("Table 1.csv")
+library(knitr)
+library(dplyr)
+library(kableExtra)
+kable(Table1[c(1:8, 9:16, 17:21, 22:25), 1:4], caption = "Table 1 Breakdown of Survey Variables", ) %>%
+  kable_styling("striped", full_width = F) %>%
+  pack_rows("Race", 1, 8) %>%
+  pack_rows("Education", 9, 16) %>%
+  pack_rows("Disability Status", 17, 21) %>%
+  pack_rows("Gender", 22, 25)
+```
+<br>
+
+Mismatched values between origin and destinations were handled differently for survey variables. For race mismatched values were recoded as NAs as there was no accurate way to assess which observation was accurate. Mismatched values for education were handled in one of two ways, when the origin value was at a higher level than the destination value, the variable was recoded as an NA, and when the destination value was higher than the origin value the destination value was used. For these cases a new variable was created, “higher education attained,” in total 1438 residents achieved higher levels of educational attainment. Disability status was handled similarly to education, but with mismatched values grouped as either “became disabled” or “lost disability benefits.”
+
+# Building Permit Data
+
+Through the Analyze Boston Website, the Inspectional Services Department and the Department of Innovation and Technology for the City of Boston have published a database containing all building permits issued within city limits from January 9th, 2009 to the present day. These permits cover a variety of work, from minor renovations to the construction of new property. In total there are 460,208 permits issued by the city. First only the relevant permits were extracted, these included major renovations and new constructions, as these have been shown to have an effect on rent values  (Hornbeck & Keniston, 2017). These permits were then grouped into Commercial, Residential, and Mixed-Use developments to see if the type of development could have an impact on residential mobility.
+
+Finally, the permit data was spatially joined to each resident in the data using the sf package in R. To accomplish this, the moves and permits were subsetted to matching years and then a count of permits within 1.0 km, 0.5 km, and 0.1 km of the address of the resident was calculated. These distances were chosen based on previous research, which has shown that the impacts of new development taper off after 0.5 km (Hornbeck & Keniston, 2017; Pennington, 2018). This process was then repeated using a subset of residential, commercial, and mixed-use permits. Additionally, a time lagged variable was created by adding the total of number of permits to the total number of permits from the previous year.
+
+# Crime Data
+
+Through the Analyze Boston Website, the Boston Police Department (BPD) and the Department of Innovation and Technology for the City of Boston have published a database of all crime incident reports from within city limits from July 8th, 2012 to the present. Crime incident reports contain the initial details of an incident to which BPD officer respond to. Crimes were grouped into two categories violent and non-violent, based on the Federal Bureau of Investigation’s Uniform Crime Reporting (UCR) Program standards (Uniform Crime Reporting (UCR) Program—FBI, 2020). Finally, the crime data was spatially joined to the resident data using the same methods described above for the permit data. This data set is not exhaustive of all crime committed in Boston, only crimes that were investigated by the BPD which could introduce some systemic bias. However, as a proxy of how safe residents feel in their neighborhood this data set is quite strong (Desmond & Gershenson, 2017). In total there were 679,627 crimes reported between 2012 and 2019.
+
+# Rent Data
+
+Address level data on rental prices is notoriously difficult to collect accurately as leases are private and there is no central repository. The Massachusetts Institute of Technology’s research guides recommended a project by Jeff Kaufman (Greenleaf, 2020). Kaufman has been web-scrapping rental information every month since 2011 and has made the results available on github (Greenleaf, 2020; Kaufman, 2015). Kaufman’s project includes the number of bedrooms, monthly rent, and latitude and longitude from apartment listings on the website Padmapper, which compiles apartment listings from a variety of sources including Craigslist, Apartments.com, Zillow, and Zumper. In total Kaufman’s repository has 834,461 listings from 2011 to 2019, excluding 2012.  While there is some debate about the correlation between the listing price and what long term residents pay, this data source provides the best estimate as to what a current renter would be paying in a location (Foley et al., 2012; Gámez et al., 2000).
+
+# Eviction Data
+
+The eviction data used in this study was collected by the Eviction Lab at Princeton University led by Matthew Desmond. The Eviction Lab has collected data on over 80 million evictions in the US since 2000, they have then geocoded these evictions, spatially joined them to census tracts, and provide those census tracts to the public (Desmond et al., 2018). The data from the eviction lab includes the total number of a evictions filed in a tract between 2000 and 2016 as well as the number of evictions filed in a tract in a given year. Residents were spatially joined to the corresponding years census tract to add the number of evictions filed and evictions rate. 
+
+The use of census tracts does introduce the possibility of errors due to the MAUP, however due to time, financial, and legal constraints no other data source was available. Fortunately, census tracts are small and the error they introduce is minimal (Wong, 2009). 
+
+# Analysis Methods
+
+Logistic regressions using a generalized linear model (GLM) with maximum likelihood settings were fit with the outcome variable “moved,” except where noted. McFadden’s pseudo R squared was used to compare models where possible. Pseudo R squared values are comparable to traditional R squared values and represent the overall explanatory power of a model (UCLA, 2020a). Traditional R squares are measured on a scale between 0 and 1 and are often interpreted as the percentage of variance explained by the model. Unlike traditional R square values, pseudo r squares can be outside of the 0 to 1 range and cannot be used as percent of explained variance. However, lower values still represent weaker models that explain less of the variance than higher values (UCLA, 2020a). Pseudo R squares could not be calculated for the random and fixed effects models, for these models the Akaike information criterion (AIC) was used instead. The AIC is alternative measure of the variance explained by a model, the lower the AIC the more accurate the model. All GLM models were carried out in the stats package in R (Rodrıguez, 2012; UCLA, 2020b, 2020a). 
+
+To test for multicollinearity a variance inflation factor (VIF) was calculated for each continuous variable. Values between 5 and 10 indicate possible collinearity between predictor variables and values greater than 10 indicate collinearity issues that must be addressed (Heckman, 2015). 
+
+A random effects model was used to account for the inherent clustering in panel methods. A random effects model was chosen over a fixed effects model as tests suggested that the difference between groups, residents in this study, was significantly higher than differences within groups (R. Williams, 2018). This model was estimated with the glmmML package in R (Rodrıguez, 2012).

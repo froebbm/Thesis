@@ -1,0 +1,26 @@
+Variable,Count,Percentage,Cumulative Percent
+    Asian,"2,586",3.87,3.87
+    Black,"22,486",33.63,37.5
+    Hispanic,"6,684",10,47.5
+    Multi-Racial,"2,232",3.34,50.84
+    Native American,360,0.54,51.38
+    White,"5,719",8.55,59.93
+    Other,962,1.44,61.37
+    NA,"25,829",38.63,100
+    No High School,"1,746",2.61,2.61
+    Some High School,"4,039",6.04,8.65
+    GED,713,1.07,9.72
+    High School,"11,723",17.53,27.25
+    Some College,"11,449",17.12,44.37
+    College,"4,910",7.34,51.71
+    Advanced Degree,"1,496",2.24,53.95
+    NA,"30,782",46.04,100
+    No,"40,759",60.96,60.96
+    Disabled,"6,690",10.01,70.97
+    Became Disabled,"1,006",1.5,72.47
+    Lost Disability Benefits,931,1.39,73.86
+    NA,"17,412",26.04,100
+    Male,"14,321",21.42,21.42
+    Female,"28,827",43.12,64.54
+    Trans,654,0.98,65.52
+    NA,"23,056",34.49,100

@@ -1,0 +1,4 @@
+Variable,OR,SE,VIF
+Latitude ,0.896**,0.049,1.59
+Longitude,0.998,0.016,1.59
+Pseudo -R2,0.000,,

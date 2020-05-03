@@ -1,0 +1,18 @@
+Variable,OR,SE
+Race,,
+   African American,1.142**,0.067
+   Hispanic,1.07,0.07
+   Multi-Racial,0.909,0.077
+   Native American,0.85,0.157
+   Other,1.504****,0.149
+   White,0.799****,0.055
+Graduated High School,0.918**,0.033
+Earned Higher Degree,1.264****,0.09
+Disability Status,,
+    Disabled,0.884,0.088
+    Lost Disability Benefits,0.802,0.111
+    Not Disabled,1.054,0.097
+Gender,,
+    Male,1.134****,0.033
+    Trans,1.098,0.138
+Pseudo-R2,0.501,

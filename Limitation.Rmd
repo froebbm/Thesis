@@ -1,0 +1,28 @@
+---
+title: "Chapter 7: Limitations"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+While this research attempted to be as through as possible with regards to variables included and method conducted, there are several important limitations that should be addressed. Some of these limitations could be investigated with further research projects while others are baked into the research design.
+
+# Spatial Regression Models
+
+While the trend surface showed very little statistical significance, it is possible that other spatial variables not included in the models or spatial variations in the variables included were not accounted for. This could lead to inaccurate results. I attempted to run spatial regression models; however, they were too computationally intensive for my computer resulting in a variety of error messages and crashes in R, GeoDa, and ArcMap. Unfortunately, the more powerful computers on Tufts’ campus could not be accessed due to campus closures caused by the COVID-19 pandemic. Future research using this data should attempt to run spatial regression models to examine residential mobility for purely spatial patterns.
+
+# Qualitative and Mixed Methods Approaches
+
+Another important limitation that should be addressed by future research is the lack of a motivation variable for the moves present in the data. The BTHC data only tells us if a resident has moved. The motivations behind a move are important for developing more effective policy proposals. Policies meant to curb displacement based on data from all moves are less likely to be effective as policies based just on displacement data. The only way these motivations can be addressed is through either an in-depth ethnography of the most statistically interesting residents or through a mixed methods approach. 
+
+A mixed methods approach should include not only the data gathered in this study but included interviews and surveys comparable  to those conducted as a part of the MARS instrument used by Desmond (Desmond, 2016). This would likely involve partnering with the BTHC to conduct longitudinal research and analyzing the MARS style data along with the surveys already implemented by the BTHC. With the motivations for moves established a more accurate picture of residents’ movement behavior and differences between forced and unforced displacement can be teased out of the data. A more longitudinal approach would also address the single biggest limitation with this study, loss of participants.
+
+# Loss of Participants
+
+The BTHC operates out of 25 sites within Boston city limits, all the data collected in this study comes from one of those sites. It is highly likely that many residents moved far enough way that traveling back to Boston to for free tax preparation was not worth it. For example, 2 participants relocated to Brockton, 26 miles south of Boston, it is quite possible that many more residents relocated there but were not willing to take the train or drive into Boston to have their taxes done. Some residents also relocated to Worcester, 44 miles west of Boston, Providence, RI, 51 miles south of Boston, and Manchester, NH, 53 miles north of Boston. It is also highly likely that those residents who relocated further away are significantly different from those residents who remained close to Boston. Fortunately, it is possible to encourage far flung residents to remain in the study with a longitudinal design. Researchers directly involved in the data collection process over the course of the study period can offer compensation for far flung residents to commute to Boston for tax preparation and data collection. While this will not fully eliminate residents from dropping out of the study it should significantly mitigate the possible bias from residents dropping out.
+
+Another possibility for addressing this issue is to partner with VITA programs in the Greater Boston region and create a more complete data set on low income mobility. However, such an approach would likely face increased ethical concerns regarding data handling and privacy as well as significantly more bureaucratic hurdles.
+
+Despite its limitations, this thesis presents results that help paint a more accurate picture of low-income mobility in Boston. As well as informing policy makers how best to mitigate the negative effects of increased development and presenting several new avenues for future research on residential mobility.	
+

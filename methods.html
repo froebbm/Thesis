@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Chapter 3:</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Development and Displacement</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="introduction.html">Introduction</a>
+</li>
+<li>
+  <a href="lit_review.html">Literature Review</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Chapter 3:</h1>
+<h3 class="subtitle">Data, Data Preparation, and Methods</h3>
+
+</div>
+
+
+<p>The Boston Tax Help Coalition (BTHC) is a partnership of non-profits, local businesses, and community organizations led by the Boston Planning and Development Agency (BPDA) and the Mayor’s Office of Financial Empowerment. The goal of the BTHC and the Mayor’s Office of Financial Empowerment is to promote the economic independence of working families and encourage economic growth among Boston’s low-income residents though free tax preparation and financial counseling (About Us – Boston Tax Help Coalition, 2020). The BTHC tax preparation is carried out though the Internal Revenue Service’s (IRS) Volunteer Income Tax Assistance (VITA) program, where IRS trained volunteers provide free tax return preparation and electronic filing (Volunteer Income Tax Assistance (VITA) | Benefits.gov, 2020).</p>
+<p>The BTHC has been in operation since 2001 and has stored data from these tax returns from 2005 to 2019, except for 2011. BTHC data from 2011 was unintentionally deleted from their server due to data mismanagement and could not be used in the study. Residents using BTHC services were assigned an anonymous ID that allowed changes in their data to be tracked over time. This included a resident’s current addresses which allowed a resident’s movement over time to be mapped. Other data taken from tax returns includes adjusted gross income (AGI), age, filing status, and number of dependents. Additionally, residents were asked to fill out survey for demographic information including race, level of education, disability status, and gender.</p>
+<p>In total there were 25,339 residents included in the BTHC data. These residents were grouped into 66,858 origin destination (OD) pairs. Origin destination pairs is a data format where each observation has two sets of variables corresponding to two locations or points in time. In this data each resident had data from two addresses representing two consecutive visits to the BTHC.</p>
+<div id="bthc-data" class="section level1">
+<h1>BTHC Data</h1>
+<p>The variables taken directly from the tax returns such as AGI, number of dependents, filing status, and age were available for every OD pair in the data and were cleaned. The AGIs were adjusted for inflation to 2019 dollars using the Consumer Price Index (CPI) to allow for direct comparisons of income (Nau, 2014). Additionally, a new variable “change in income” was calculated by subtracting the origin AGI from the destination AGI. The “change in income” variable could stand in as a proxy for changes in employment status, such as suffering a job loss or receiving a promotion, which could be associated with mobility (Desmond, 2012).</p>
+<p>Using the number of dependents two additional variables were created, having an additional child or whether a resident became an “empty nester.” In total, 3984 residents had an additional child and 3938 became “empty nester.” While these are not perfect proxies as many children leave the house while still being dependents on their parents taxes, they do allow for common life course reasons for moving to be controlled for (Mulder &amp; Malmberg, 2011).</p>
+<p>Filing status was used to create proxy variables for marital status. If a resident moved from any filing status to “married, filing jointly” or “married, filing separately” they were coded as having gotten married. Inversely, if any resident moved from “married, filing jointly” or “married, filing separately” to any other filing status they were coded as having experienced a dissolution of a romantic relationship. Overall, 1031 residents got married and 747 residents experienced a dissolution. The biggest limitation to this variable is that it does not capture any form of cohabitation, which has become increasingly common in the US (Gurrentz, 2018).</p>
+<p>The survey variables all had varying response rates, with disability status having the highest at 73.87% and educational attainment having the lowest at 54.96%. Overall, the residents were predominantly African American, had graduated high school, were not disabled, and female, see table 1 below for a summary.</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Table 1
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Count
+</th>
+<th style="text-align:right;">
+Percentage
+</th>
+<th style="text-align:right;">
+Cumulative.Percent
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="8">
+<td colspan="4" style="border-bottom: 1px solid;">
+<strong>Race</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Asian
+</td>
+<td style="text-align:left;">
+2,586
+</td>
+<td style="text-align:right;">
+3.87
+</td>
+<td style="text-align:right;">
+3.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Black
+</td>
+<td style="text-align:left;">
+22,486
+</td>
+<td style="text-align:right;">
+33.63
+</td>
+<td style="text-align:right;">
+37.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Hispanic
+</td>
+<td style="text-align:left;">
+6,684
+</td>
+<td style="text-align:right;">
+10.00
+</td>
+<td style="text-align:right;">
+47.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Multi-Racial
+</td>
+<td style="text-align:left;">
+2,232
+</td>
+<td style="text-align:right;">
+3.34
+</td>
+<td style="text-align:right;">
+50.84
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Native American
+</td>
+<td style="text-align:left;">
+360
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+51.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+White
+</td>
+<td style="text-align:left;">
+5,719
+</td>
+<td style="text-align:right;">
+8.55
+</td>
+<td style="text-align:right;">
+59.93
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Other
+</td>
+<td style="text-align:left;">
+962
+</td>
+<td style="text-align:right;">
+1.44
+</td>
+<td style="text-align:right;">
+61.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+NA
+</td>
+<td style="text-align:left;">
+25,829
+</td>
+<td style="text-align:right;">
+38.63
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+</tr>
+<tr grouplength="8">
+<td colspan="4" style="border-bottom: 1px solid;">
+<strong>Education</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+No High School
+</td>
+<td style="text-align:left;">
+1,746
+</td>
+<td style="text-align:right;">
+2.61
+</td>
+<td style="text-align:right;">
+2.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Some High School
+</td>
+<td style="text-align:left;">
+4,039
+</td>
+<td style="text-align:right;">
+6.04
+</td>
+<td style="text-align:right;">
+8.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+GED
+</td>
+<td style="text-align:left;">
+713
+</td>
+<td style="text-align:right;">
+1.07
+</td>
+<td style="text-align:right;">
+9.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+High School
+</td>
+<td style="text-align:left;">
+11,723
+</td>
+<td style="text-align:right;">
+17.53
+</td>
+<td style="text-align:right;">
+27.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Some College
+</td>
+<td style="text-align:left;">
+11,449
+</td>
+<td style="text-align:right;">
+17.12
+</td>
+<td style="text-align:right;">
+44.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+College
+</td>
+<td style="text-align:left;">
+4,910
+</td>
+<td style="text-align:right;">
+7.34
+</td>
+<td style="text-align:right;">
+51.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Advanced Degree
+</td>
+<td style="text-align:left;">
+1,496
+</td>
+<td style="text-align:right;">
+2.24
+</td>
+<td style="text-align:right;">
+53.95
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+NA
+</td>
+<td style="text-align:left;">
+30,782
+</td>
+<td style="text-align:right;">
+46.04
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+</tr>
+<tr grouplength="5">
+<td colspan="4" style="border-bottom: 1px solid;">
+<strong>Disability Status</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+No
+</td>
+<td style="text-align:left;">
+40,759
+</td>
+<td style="text-align:right;">
+60.96
+</td>
+<td style="text-align:right;">
+60.96
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Disabled
+</td>
+<td style="text-align:left;">
+6,690
+</td>
+<td style="text-align:right;">
+10.01
+</td>
+<td style="text-align:right;">
+70.97
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Became Disabled
+</td>
+<td style="text-align:left;">
+1,006
+</td>
+<td style="text-align:right;">
+1.50
+</td>
+<td style="text-align:right;">
+72.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Lost Disability Benefits
+</td>
+<td style="text-align:left;">
+931
+</td>
+<td style="text-align:right;">
+1.39
+</td>
+<td style="text-align:right;">
+73.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+NA
+</td>
+<td style="text-align:left;">
+17,412
+</td>
+<td style="text-align:right;">
+26.04
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+</tr>
+<tr grouplength="4">
+<td colspan="4" style="border-bottom: 1px solid;">
+<strong>Gender</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Male
+</td>
+<td style="text-align:left;">
+14,321
+</td>
+<td style="text-align:right;">
+21.42
+</td>
+<td style="text-align:right;">
+21.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Female
+</td>
+<td style="text-align:left;">
+28,827
+</td>
+<td style="text-align:right;">
+43.12
+</td>
+<td style="text-align:right;">
+64.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+Trans
+</td>
+<td style="text-align:left;">
+654
+</td>
+<td style="text-align:right;">
+0.98
+</td>
+<td style="text-align:right;">
+65.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+NA
+</td>
+<td style="text-align:left;">
+23,056
+</td>
+<td style="text-align:right;">
+34.49
+</td>
+<td style="text-align:right;">
+100.00
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Mismatched values between origin and destinations were handled differently for survey variables. For race mismatched values were recoded as NAs as there was no accurate way to assess which observation was accurate. Mismatched values for education were handled in one of two ways, when the origin value was at a higher level than the destination value, the variable was recoded as an NA, and when the destination value was higher than the origin value the destination value was used. For these cases a new variable was created, “higher education attained,” in total 1438 residents achieved higher levels of educational attainment. Disability status was handled similarly to education, but with mismatched values grouped as either “became disabled” or “lost disability benefits.”</p>
+</div>
+<div id="building-permit-data" class="section level1">
+<h1>Building Permit Data</h1>
+<p>Through the Analyze Boston Website, the Inspectional Services Department and the Department of Innovation and Technology for the City of Boston have published a database containing all building permits issued within city limits from January 9th, 2009 to the present day. These permits cover a variety of work, from minor renovations to the construction of new property. In total there are 460,208 permits issued by the city. First only the relevant permits were extracted, these included major renovations and new constructions, as these have been shown to have an effect on rent values (Hornbeck &amp; Keniston, 2017). These permits were then grouped into Commercial, Residential, and Mixed-Use developments to see if the type of development could have an impact on residential mobility.</p>
+<p>Finally, the permit data was spatially joined to each resident in the data using the sf package in R. To accomplish this, the moves and permits were subsetted to matching years and then a count of permits within 1.0 km, 0.5 km, and 0.1 km of the address of the resident was calculated. These distances were chosen based on previous research, which has shown that the impacts of new development taper off after 0.5 km (Hornbeck &amp; Keniston, 2017; Pennington, 2018). This process was then repeated using a subset of residential, commercial, and mixed-use permits. Additionally, a time lagged variable was created by adding the total of number of permits to the total number of permits from the previous year.</p>
+</div>
+<div id="crime-data" class="section level1">
+<h1>Crime Data</h1>
+<p>Through the Analyze Boston Website, the Boston Police Department (BPD) and the Department of Innovation and Technology for the City of Boston have published a database of all crime incident reports from within city limits from July 8th, 2012 to the present. Crime incident reports contain the initial details of an incident to which BPD officer respond to. Crimes were grouped into two categories violent and non-violent, based on the Federal Bureau of Investigation’s Uniform Crime Reporting (UCR) Program standards (Uniform Crime Reporting (UCR) Program—FBI, 2020). Finally, the crime data was spatially joined to the resident data using the same methods described above for the permit data. This data set is not exhaustive of all crime committed in Boston, only crimes that were investigated by the BPD which could introduce some systemic bias. However, as a proxy of how safe residents feel in their neighborhood this data set is quite strong (Desmond &amp; Gershenson, 2017). In total there were 679,627 crimes reported between 2012 and 2019.</p>
+</div>
+<div id="rent-data" class="section level1">
+<h1>Rent Data</h1>
+<p>Address level data on rental prices is notoriously difficult to collect accurately as leases are private and there is no central repository. The Massachusetts Institute of Technology’s research guides recommended a project by Jeff Kaufman (Greenleaf, 2020). Kaufman has been web-scrapping rental information every month since 2011 and has made the results available on github (Greenleaf, 2020; Kaufman, 2015). Kaufman’s project includes the number of bedrooms, monthly rent, and latitude and longitude from apartment listings on the website Padmapper, which compiles apartment listings from a variety of sources including Craigslist, Apartments.com, Zillow, and Zumper. In total Kaufman’s repository has 834,461 listings from 2011 to 2019, excluding 2012. While there is some debate about the correlation between the listing price and what long term residents pay, this data source provides the best estimate as to what a current renter would be paying in a location (Foley et al., 2012; Gámez et al., 2000).</p>
+</div>
+<div id="eviction-data" class="section level1">
+<h1>Eviction Data</h1>
+<p>The eviction data used in this study was collected by the Eviction Lab at Princeton University led by Matthew Desmond. The Eviction Lab has collected data on over 80 million evictions in the US since 2000, they have then geocoded these evictions, spatially joined them to census tracts, and provide those census tracts to the public (Desmond et al., 2018). The data from the eviction lab includes the total number of a evictions filed in a tract between 2000 and 2016 as well as the number of evictions filed in a tract in a given year. Residents were spatially joined to the corresponding years census tract to add the number of evictions filed and evictions rate.</p>
+<p>The use of census tracts does introduce the possibility of errors due to the MAUP, however due to time, financial, and legal constraints no other data source was available. Fortunately, census tracts are small and the error they introduce is minimal (Wong, 2009).</p>
+</div>
+<div id="analysis-methods" class="section level1">
+<h1>Analysis Methods</h1>
+<p>Logistic regressions using a generalized linear model (GLM) with maximum likelihood settings were fit with the outcome variable “moved,” except where noted. McFadden’s pseudo R squared was used to compare models where possible. Pseudo R squared values are comparable to traditional R squared values and represent the overall explanatory power of a model (UCLA, 2020a). Traditional R squares are measured on a scale between 0 and 1 and are often interpreted as the percentage of variance explained by the model. Unlike traditional R square values, pseudo r squares can be outside of the 0 to 1 range and cannot be used as percent of explained variance. However, lower values still represent weaker models that explain less of the variance than higher values (UCLA, 2020a). Pseudo R squares could not be calculated for the random and fixed effects models, for these models the Akaike information criterion (AIC) was used instead. The AIC is alternative measure of the variance explained by a model, the lower the AIC the more accurate the model. All GLM models were carried out in the stats package in R (Rodrıguez, 2012; UCLA, 2020b, 2020a).</p>
+<p>To test for multicollinearity a variance inflation factor (VIF) was calculated for each continuous variable. Values between 5 and 10 indicate possible collinearity between predictor variables and values greater than 10 indicate collinearity issues that must be addressed (Heckman, 2015).</p>
+<p>A random effects model was used to account for the inherent clustering in panel methods. A random effects model was chosen over a fixed effects model as tests suggested that the difference between groups, residents in this study, was significantly higher than differences within groups (R. Williams, 2018). This model was estimated with the glmmML package in R (Rodrıguez, 2012).</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+---
+title: "Chapter 4: Exploratory Data Analysis"
+output: 
+  html_document:
+    toc: false
+---
+
+Overall, the participants were low income, with a mean AGI of $15,398 (SD = $16,608) with values ranging from -$34,525 to $290,181. Income was positively skewed and had high variance. See Figure 1 below for a histogram of income. The mean age was roughly 43 years old (SD = 16.5) and most participants did not have any dependents (M = 0.58, SD = 0.88).
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+ library(ggplot2)
+ library(tidyverse)
+ library(spatialEco)
+ library(sp)
+ library(spatstat)
+ library(maptools)
+ library(raster)
+ library(sf)
+ library(tmap)
+ library(extrafont)
+ library(spdep)
+ loadfonts(device = "win")
+ Regression_Data_Full <- openxlsx::read.xlsx("Regression_Data_Final.xlsx")
+ bw_1km_per <- 2 * IQR(Regression_Data_Full$Tot_per_1km_one_year, na.rm = TRUE) / length(na.omit(Regression_Data_Full$Tot_per_1km_one_year))^(1/3)
+ permits <-read.csv("H:/Thesis/Tabular Data/regression_permits.csv")
+Towns <- read_sf("H:/Thesis/ShapeFiles/TOWNSSURVEY_POLYM.shp")
+permits <- subset(permits, !is.na(permits$lat))
+permits$Year <- substr(as.character(permits$issued_date),1,4)
+
+permits_sf <- st_as_sf(x = permits, 
+                       coords = c("long", "lat"),
+                       crs = "+proj=longlat +datum=WGS84")
+
+permits_sf <- st_transform(permits_sf, crs = "+proj=lcc +lat_1=42.68333333333333 +lat_2=41.71666666666667 +lat_0=41 +lon_0=-71.5 +x_0=200000 +y_0=750000 +ellps=GRS80 +units=m +no_defs")            
+
+
+permits_sp <- SpatialPointsDataFrame(coords = permits[c("long", "lat")],
+                                     proj4string = CRS("+proj=longlat +datum=WGS84"),
+                                     data = permits)
+permits_sp <- spTransform(permits_sp, CRS("+proj=lcc +lat_1=42.68333333333333 +lat_2=41.71666666666667 +lat_0=41 +lon_0=-71.5 +x_0=200000 +y_0=750000 +ellps=GRS80 +units=km +no_defs"))
+
+permits_sp_kde <- sp.kde(permits_sp, bw = 5, standardize = T, nc = 300, nr = 450)
+
+Crimes <-read.csv("H:/Thesis/Tabular Data/Crimes_Data.csv")
+
+#clean data
+Crimes <- subset(Crimes, Crimes$Long != -1)
+Crimes <- subset(Crimes, Crimes$Long != 0)
+
+Crimes_sf <- st_as_sf(x = Crimes, 
+                   coords = c("Long", "Lat"),
+                   crs = "+proj=longlat +datum=WGS84")
+
+Crimes_sf <- st_transform(Crimes_sf, crs = "+proj=lcc +lat_1=42.68333333333333 +lat_2=41.71666666666667 +lat_0=41 +lon_0=-71.5 +x_0=200000 +y_0=750000 +ellps=GRS80 +units=m +no_defs")            
+
+Crimes_sp <- SpatialPointsDataFrame(coords = Crimes[c("Long", "Lat")],
+                                     proj4string = CRS("+proj=longlat +datum=WGS84"),
+                                     data = Crimes)
+Crimes_sp <- spTransform(Crimes_sp, CRS("+proj=lcc +lat_1=42.68333333333333 +lat_2=41.71666666666667 +lat_0=41 +lon_0=-71.5 +x_0=200000 +y_0=750000 +ellps=GRS80 +units=m +no_defs"))
+
+#density estimation
+Crimes_sp_kde <- sp.kde(Crimes_sp, bw = 5000, standardize = T, nc = 300, nr = 450)
+
+```
+
+<br>
+
+```{r Figure 1, echo=FALSE, message=FALSE, warning=FALSE, fig.cap= "Note. AGIs less than 0 have been removed from the data to ensure readability"}
+For_Fig1 <- subset(Regression_Data_Full, Regression_Data_Full$Des_Deflated_AGI <= 100000 & Regression_Data_Full$Des_Deflated_AGI >= 1)
+
+bw_income <-   2 * IQR(For_Fig1$Des_Deflated_AGI, na.rm = TRUE) / length(na.omit(For_Fig1$Des_Deflated_AGI))^(1/3)
+
+ggplot(For_Fig1) +
+  geom_histogram(aes(x = Des_Deflated_AGI), fill = "purple", alpha = 0.75, binwidth = 1200) +
+  labs(title = "Figure 1", subtitle = "Distribution of AGI", x = "Adjusted Gross Income in 2019 Dollars", y = "Count of Residents") +
+  theme(plot.subtitle = element_text(size = 12, family = "Cambria"),
+        plot.title = element_text(size = 12, family = "Cambria", face = "bold"),
+        text = element_text(size = 12, family = "Cambria"))
+```
+
+The mean permits issued within 1 km was 428 (SD = 388), permits issued within 0.5 km was 119 (SD = 119), and permits issued within 0.1km was 5 (SD = 6). Each variable was positively skewed, with a high variance. Figure 2 shows the distribution of number of permits issued within 1km after the removal of 4,609 observation with a count of 1. The 0.5 km and 0.1 km counts had a similar pattern of skewedness. 
+
+```{r Figure 2, echo=FALSE, message=FALSE, warning=FALSE, fig.cap= "Counts of 1 have been removed from the data to ensure readability."}
+subset(Regression_Data_Full, Regression_Data_Full$Tot_Crimes_1km_one_year > 1) %>%
+  
+  ggplot() +
+  geom_histogram(aes(x = Tot_per_1km_one_year), fill = "purple", alpha = 0.75, binwidth = bw_1km_per) +
+  labs(title = "Figure 2", subtitle = "Distribution of Permit Counts", x = "Total Permits Within 1km", y = "Count of Residents") +
+  theme(plot.subtitle = element_text(size = 12, family = "Cambria"),
+        plot.title = element_text(size = 12, family = "Cambria", face = "bold"),
+        text = element_text(size = 12, family = "Cambria"))
+```
+
+The high variation is likely a result of the uneven spatial distribution of permits, with building permits significantly more clustered around downtown Boston, Charlestown, and Southie. Figure 3 shows a kernel density estimation of issued building permits.
+
+```{r Figure 3, echo=FALSE, message=FALSE, warning=FALSE}
+
+tm_shape(permits_sp_kde) +
+  tm_raster(palette = "RdPu", title = "", style = "pretty") +
+  tm_layout(title = paste("Figure 3\nBuilding Permit Density", sep="\n"),
+            legend.position = c("left","bottom"),
+            fontfamily = "Cambria") +
+  tm_shape(Towns) +
+  tm_polygons(alpha = 0.1) +
+  tm_compass() +
+  tm_scale_bar()
+```
+
+The mean number of crimes reported within 1 km was 2935 (SD = 2167), crimes reported within 0.5 km was 834 (SD = 633), and crimes reported within 0.1 km was 41 (SD = 43). Like the building permit data, the distribution of variable is positively skewed, with high variance. Figure 4 presents the distribution of number of crimes reported within 1km after the removal of 4,576 observation with a count of 1. The 0.5 km and 0.1 km counts had a similar pattern of skewedness.  The high variance is likely a result of the uneven spatial distribution of crimes reported, with crimes reported significantly clustered around downtown Boston and spreading south to Dorchester and Roxbury, with a smaller cluster in Alston Brighton. Figure 5 shows a kernel density estimation of issued building permits.
+
+``````{r Figure 4, echo=FALSE, message=FALSE, warning=FALSE, fig.cap= "Counts of 1 have been removed from the data to ensure readability."}
+bw_1km_Crimes <- 2 * IQR(Regression_Data_Full$Tot_Crimes_1km_one_year, na.rm = TRUE) / length(na.omit(Regression_Data_Full$Tot_Crimes_1km_one_year))^(1/3)
+subset(Regression_Data_Full, Regression_Data_Full$Tot_Crimes_1km_one_year > 1) %>%
+  
+  ggplot() +
+  geom_histogram(aes(x = Tot_Crimes_1km_one_year), fill = "purple", alpha = 0.75, binwidth = bw_1km_Crimes) +
+  labs(title = "Figure 4", subtitle = "Distribution of Crime Counts", x = "Total Crime Reported Within 1km", y = "Count of Residents") +
+  theme(plot.subtitle = element_text(size = 12, family = "Cambria"),
+        plot.title = element_text(size = 12, family = "Cambria", face = "bold"),
+        text = element_text(size = 12, family = "Cambria"))
+
+```
+
+```{r Figure 5, echo=FALSE, message=FALSE, warning=FALSE}
+tm_shape(Crimes_sp_kde) +
+  tm_raster(palette = "RdPu", title = "", style = "pretty") +
+  tm_layout(title = paste("Figure 5\nCrime Report Density", sep="\n"),
+            legend.position = c("left","bottom"),
+            fontfamily = "Cambria") +
+  tm_shape(Towns) +
+  tm_polygons(alpha = 0.1) +
+  tm_compass() +
+  tm_scale_bar()
+```
+
+To estimate the rental prices for areas between the points collected as a part of Kaufman’s project, a rent surface was created. This surface uses the point values and statistical methods to estimate the areas where no data was collected, creating a map showing the estimated price per bedroom. The first step to creating a rent surface was normalizing the rental prices per bedroom. While rent per square foot is a more common measure, rent per bedroom has been used when square footage is not available (Foley et al., 2012; Gámez et al., 2000). For the sake of this normalization studio apartments, which were listed as zero bedrooms, were treated as one bedrooms. 
+
+Prices were adjusted for inflation using the CPI method described earlier (Nau, 2014). In general, the price per bedroom appears to be increasing at a statistically significant rate each year, with an average rent of roughly $1,300 in 2011 and rising to roughly $1,800 in 2019. A linear trend estimation found this relationship to be statistically significant at the 0.05 level. Figure 6 below presents a summary of mean estimated rent price by year.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+setwd("H:/Thesis/Rent_Rasters")
+
+file_names <- list.files(pattern = "rent*")
+years <- as.numeric(substr(file_names, 5,8))
+
+for (i in file_names) {
+  assign(i, raster(i))
+}
+
+#deflating raster data
+Inflation <- read.csv("H:/Thesis/Tabular Data/Inflation_Multipliers.csv")
+
+rent2011 <- rent2011 * (Inflation$Inflation_Multiplier[Inflation$Year == "2011"])
+rent2013 <- rent2013 * (Inflation$Inflation_Multiplier[Inflation$Year == "2013"])
+rent2014 <- rent2014 * (Inflation$Inflation_Multiplier[Inflation$Year == "2014"])
+rent2015 <- rent2015 * (Inflation$Inflation_Multiplier[Inflation$Year == "2015"])
+rent2016 <- rent2016 * (Inflation$Inflation_Multiplier[Inflation$Year == "2016"])
+rent2017 <- rent2017 * (Inflation$Inflation_Multiplier[Inflation$Year == "2017"])
+rent2018 <- rent2018 * (Inflation$Inflation_Multiplier[Inflation$Year == "2018"])
+rent2019 <- rent2019 * (Inflation$Inflation_Multiplier[Inflation$Year == "2019"])
+
+#making data frames
+setwd("H:/Thesis/Rent Data")
+file_names <- list.files(pattern = "Rent*")
+
+for(i in file_names){
+  filepath <- i
+  assign(i, read.csv(filepath))
+}
+
+Rent2011.csv$Rent_Per_Bedroom_Adj <- Rent2011.csv$Rent_Per_Bedroom * (Inflation$Inflation_Multiplier[Inflation$Year == "2011"])
+Rent2013.csv$Rent_Per_Bedroom_Adj <- Rent2013.csv$Rent_Per_Bedroom * (Inflation$Inflation_Multiplier[Inflation$Year == "2013"])
+Rent2014.csv$Rent_Per_Bedroom_Adj <- Rent2014.csv$Rent_Per_Bedroom * (Inflation$Inflation_Multiplier[Inflation$Year == "2014"])
+Rent2015.csv$Rent_Per_Bedroom_Adj <- Rent2015.csv$Rent_Per_Bedroom * (Inflation$Inflation_Multiplier[Inflation$Year == "2015"])
+Rent2016.csv$Rent_Per_Bedroom_Adj <- Rent2016.csv$Rent_Per_Bedroom * (Inflation$Inflation_Multiplier[Inflation$Year == "2016"])
+Rent2017.csv$Rent_Per_Bedroom_Adj <- Rent2017.csv$Rent_Per_Bedroom * (Inflation$Inflation_Multiplier[Inflation$Year == "2017"])
+Rent2018.csv$Rent_Per_Bedroom_Adj <- Rent2018.csv$Rent_Per_Bedroom * (Inflation$Inflation_Multiplier[Inflation$Year == "2018"])
+Rent2019.csv$Rent_Per_Bedroom_Adj <- Rent2019.csv$Rent_Per_Bedroom * (Inflation$Inflation_Multiplier[Inflation$Year == "2019"])
+
+Rent_Data <- bind_rows(Rent2011.csv, Rent2013.csv, Rent2014.csv, 
+                       Rent2015.csv, Rent2016.csv, Rent2017.csv, 
+                       Rent2018.csv, Rent2019.csv)
+
+rm(Rent2011.csv, Rent2013.csv, Rent2014.csv, 
+   Rent2015.csv, Rent2016.csv, Rent2017.csv, 
+   Rent2018.csv, Rent2019.csv)
+
+
+
+Rent_for_Plot <- data.frame("Year" = c(2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019))
+
+Rent_for_Plot$Mean[Rent_for_Plot$Year == 2011] <- mean(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2011])
+Rent_for_Plot$Mean[Rent_for_Plot$Year == 2013] <- mean(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2013])
+Rent_for_Plot$Mean[Rent_for_Plot$Year == 2014] <- mean(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2014])
+Rent_for_Plot$Mean[Rent_for_Plot$Year == 2015] <- mean(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2015])
+Rent_for_Plot$Mean[Rent_for_Plot$Year == 2016] <- mean(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2016])
+Rent_for_Plot$Mean[Rent_for_Plot$Year == 2017] <- mean(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2017])
+Rent_for_Plot$Mean[Rent_for_Plot$Year == 2018] <- mean(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2018])
+Rent_for_Plot$Mean[Rent_for_Plot$Year == 2019] <- mean(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2019])
+
+Rent_for_Plot$Plus_1[Rent_for_Plot$Year == 2011] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2011] + sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2011])
+Rent_for_Plot$Plus_1[Rent_for_Plot$Year == 2013] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2013] + sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2013])
+Rent_for_Plot$Plus_1[Rent_for_Plot$Year == 2014] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2014] + sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2014])
+Rent_for_Plot$Plus_1[Rent_for_Plot$Year == 2015] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2015] + sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2015])
+Rent_for_Plot$Plus_1[Rent_for_Plot$Year == 2016] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2016] + sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2016])
+Rent_for_Plot$Plus_1[Rent_for_Plot$Year == 2017] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2017] + sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2017])
+Rent_for_Plot$Plus_1[Rent_for_Plot$Year == 2018] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2018] + sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2018])
+Rent_for_Plot$Plus_1[Rent_for_Plot$Year == 2019] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2019] + sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2019])
+
+Rent_for_Plot$Minus_1[Rent_for_Plot$Year == 2011] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2011] - sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2011])
+Rent_for_Plot$Minus_1[Rent_for_Plot$Year == 2013] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2013] - sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2013])
+Rent_for_Plot$Minus_1[Rent_for_Plot$Year == 2014] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2014] - sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2014])
+Rent_for_Plot$Minus_1[Rent_for_Plot$Year == 2015] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2015] - sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2015])
+Rent_for_Plot$Minus_1[Rent_for_Plot$Year == 2016] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2016] - sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2016])
+Rent_for_Plot$Minus_1[Rent_for_Plot$Year == 2017] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2017] - sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2017])
+Rent_for_Plot$Minus_1[Rent_for_Plot$Year == 2018] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2018] - sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2018])
+Rent_for_Plot$Minus_1[Rent_for_Plot$Year == 2019] <- Rent_for_Plot$Mean[Rent_for_Plot$Year == 2019] - sd(Rent_Data$Rent_Per_Bedroom_Adj[Rent_Data$Year == 2019])
+
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+```
+
+
+```{r Figure 6, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(Rent_for_Plot) +
+  geom_ribbon(aes(x = Year, ymin = Minus_1, ymax = Plus_1), fill = "purple", alpha = 0.5) +
+  geom_line(aes(x = Year, y = Mean), size = 1) +
+  labs(title = "Figure 6", subtitle = "Estimated Rent by Year", x = "Year", y = "Rent per Bedroom in 2019 Dollars") +
+  theme(plot.subtitle = element_text(size = 12, family = "Cambria"),
+        plot.title = element_text(size = 12, family = "Cambria", face = "bold"),
+        text = element_text(size = 12, family = "Cambria")) +
+  scale_x_continuous(breaks = c(2012, 2015, 2018))
+```
+
+Empirical Bayesian kriging was chosen as the interpolation method for the rent surfaces as it provided the lowest Root Mean Square Error (RMSE) value, outperforming Ordinary Kriging and Inverse Distance Weighting. These processes were carried out in ArcMap 10.7. With the rent surfaces created, the residents and rent surfaces were loaded into R using the raster package and the residents had estimated rent values spatially extracted. The rent surfaces reveal that the increase in rental prices was not spatially uniform with the largest increases occurring in Southie, Charlestown, and Back Bay. Figure 7 presents each years’ rent surface, full size figures of each year are in Appendix A.
+
+```{r Figure 7, echo=FALSE, message=FALSE, warning=FALSE}
+magick::image_read("Rent_Final.gif")
+
+```
+
+Across the state the number of evictions has risen dramatically since 2000, with dips around 2004 and 2009. This trend is presented in figure 8.  The results of a linear trend estimation found this rise to be statistically significant at the 0.05 level. As with crime reports, building permits, and rental prices eviction also varied spatially. Global Mora’s I showed significant auto correlation (I = 0.40, p<0.001), indicating that the values are spatially clustered. Figure 9 shows that more evictions were filled in Roxbury, Dorchester, Mattapan, Cambridge, Somerville, Jamaica Plain, and Hyde Park than other parts of greater Boston. Figure 10 shows that these areas were also experiencing an increase in the number of evictions filed every year, full size images of each year are found in Appendix B.
+
+```{r Figure 8, echo=FALSE, message=FALSE, warning=FALSE}
+Evictions <-read.csv("H:/Thesis/Tabular Data/all_evictions_MA.csv")
+Evictions <- Evictions[c("GEOID", "year", "eviction.filings")] 
+
+totals <- group_by(Evictions, GEOID) %>%
+  summarise(eviction.filings = sum(eviction.filings, na.rm = TRUE))
+
+Evictions_for_plot <- subset(Evictions, Evictions$GEOID == 25)
+Evictions_for_GLM <- subset(Evictions, Evictions$GEOID != 25)
+Evictions_for_GLM$since_2000 <- Evictions_for_GLM$year - 2000
+
+ggplot(Evictions_for_plot) +
+    geom_area(aes(x = year, y = eviction.filings), color = "purple", fill = "purple", alpha = 0.75) +
+    labs(title = "Figure 8", subtitle = "Evictions Per Year", x = "Year", y = "Number of Evictions") +
+    theme(plot.subtitle = element_text(size = 12, family = "Cambria"),
+          plot.title = element_text(size = 12, family = "Cambria", face = "bold"),
+          text = element_text(size = 12, family = "Cambria"))
+  
+```
+
+```{r Figure 9, echo=FALSE, message=FALSE, warning=FALSE}
+Tracts2 <- read_sf("H:/Thesis/ShapeFiles/tracts.shp")
+    colnames(Tracts2)[which(names(Tracts2) == "ct10_id")] <- "GEOID"
+    Tracts2$GEOID <- as.numeric(Tracts2$GEOID)
+    
+    Tracts2 <- left_join(Tracts2, totals, by = "GEOID")
+    
+    tm_shape(Tracts2) +
+      tm_polygons(col = "eviction.filings", style = "jenks", palette = "RdPu", title = "Number of Evictions") +
+      tm_layout(title = 
+                  paste("Figure 9\nTotal Evictions Per Census Tract", sep="\n"),
+                legend.position = c("left","bottom"),
+                fontfamily = "Cambria",
+                legend.bg.color = "white",
+                legend.bg.alpha = 0.75,
+                title.bg.color = TRUE,
+                title.bg.alpha = 0.75)
+```
+
+```{r Figure 10, echo=FALSE, message=FALSE, warning=FALSE}
+magick::image_read("evictions.gif")
+```
+
+To test for multicollinearity a correlation matrix was calculated for the continuous predictor variables in the study. These variables included income, change in income, age, number of dependents, permits issued, crimes reported, evictions filed, and estimated rent per bedroom. While many of the correlations were statistically significant, most fell between -0.1 and 0.1, and only five were higher than -0.5 or 0.5. A correlation matrix for predictor variables is presented in Table 2. While multicollinearity is likely not an issue with this data VIF were still calculated where appropriate.
+
+```{r Figure t2, echo = FALSE, warning= FALSE, message= FALSE}
+setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
+Table2 <- read.csv("Cor_Matrix.csv")
+library(knitr)
+library(dplyr)
+library(kableExtra)
+kable(Table2, 
+      col.names = c("", "n", "M", "SD", "AGI", "Change, AGI",
+                    "Age", "Num of Dep", "Com Per", "Res Per",
+                    "Mix Perm", "Vio Crimes", "Non Crimes", "Evict"),
+      caption = "Table 2 Correlation Matrix Results", escape = FALSE) %>%  
+  kable_styling("striped", full_width = T) %>%
+  add_footnote("p < .05. *. p < .001. **.", notation = "none")
+```
+
+
+<br>
+    
