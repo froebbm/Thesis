@@ -1558,39 +1558,7 @@ Pseudo -R2
 <p>Combining the variables from previous models significantly reduced the sample sizes, from 20,177 to 7,447, but did provide the strongest model (Pseudo – R2 = 0.921). Additionally, there were no issues of multi-collinearity, with the highest VIF score only reaching 3.154 well under the threshold of 5. Due to the reduction in sample size the higher educational attainment achieved variable was dropped as all residents in the model had a value of “No”.</p>
 <p>With all other variables accounted for, only age and dissolving a relationship remained significant among the tax variables. Those who dissolved a relationship were almost two and half times more likely to move than those who did not (OR = 2.450). Older residents were less likely to move (OR = 0.978). Among the survey variables only graduating high school and being African American remained significant. African American’s were 32% more likely to move (OR = 1.320) and high school graduates were roughly 22% less likely to move (OR = 0.781). Violent and Non-Violent crime remained at roughly the same values from previous models and evictions and rent became insignificant. The permit variables, however, experienced some interesting changes.</p>
 <p>Accounting for all other variables only commercial permits within 0.5 km were statistically significant. Commercial permits were associated with a higher likelihood of moving with each additional permit increasing the likelihood of moving by 0.2%. This makes the household with the most commercial permits in this study 228% more likely to move than the household with the least permits, 1271 permits and 1 permit respectively.</p>
-<p>A random effects models was run with the glmmML package in R using the same data and found similar results. Most ORs only changed by a few thousandths and no variables changed in terms of significance. The random effects model did offer some improvement to the GLM model. A pseudo R squared could not be calculated as the log of the maximum likelihood value could not be extracted by any function in R or calculated by hand. The GLM model had an AIC of 5177.2 and the random effects model offered a modest improvement to 5149.0. A fixed effects model was also estimated, which had an AIC of 1072, but as described in Chapter 3 the fixed effects model was inappropriate for this data and likely inaccurate. Table 8 summarizes the GLM and random effects models.</p>
-<pre class="r"><code>setwd(&quot;C:/Users/brian/OneDrive/Documents/GitHub/Thesis&quot;)
-Table8 &lt;- read.csv(&quot;Table8.csv&quot;)
-library(knitr)
-library(dplyr)
-library(kableExtra)
-
-Table8[9,3] &lt;- &quot; &quot;
-Table8[9,4] &lt;- &quot; &quot;
-Table8[9,6] &lt;- &quot; &quot;
-
-Table8[17,3] &lt;- &quot; &quot;
-Table8[17,4] &lt;- &quot; &quot;
-Table8[17,6] &lt;- &quot; &quot;
-
-Table8[21,3] &lt;- &quot; &quot;
-Table8[21,4] &lt;- &quot; &quot;
-Table8[21,6] &lt;- &quot; &quot;
-
-Table8[24,3] &lt;- &quot; &quot;
-Table8[24,4] &lt;- &quot; &quot;
-Table8[24,6] &lt;- &quot; &quot;
-
-Table8[28,3] &lt;- &quot; &quot;
-Table8[28,4] &lt;- &quot; &quot;
-Table8[28,6] &lt;- &quot; &quot;
-
-kable(Table8, caption = &quot;Table 8 Full Model Results&quot;,
-      col.names = c(&quot;Variable&quot;, &quot;OR&quot;,   &quot;SE&quot;,   &quot;VIF&quot;, &quot;OR&quot;,    &quot;SE&quot;)) %&gt;%
-  kable_styling(&quot;striped&quot;, full_width = F) %&gt;%
-  add_indent(c(10:15, 18:20, 22:23, 25:27, 29:30)) %&gt;%
-  add_header_above(c(&quot; &quot;, &quot;General Linear Model&quot; = 3, &quot;Random Effects&quot; = 2)) %&gt;%
-  add_footnote(c(&quot;p &lt; .10. *. p &lt; .05 **. p &lt; .01. ***. p &lt; .001 ****.&quot;, &quot;Note. N = 7,447. OR = odds ratio; SE = standard error; VIF = Variance Inflation Factor. &quot;), notation = &quot;none&quot;)</code></pre>
+A random effects models was run with the glmmML package in R using the same data and found similar results. Most ORs only changed by a few thousandths and no variables changed in terms of significance. The random effects model did offer some improvement to the GLM model. A pseudo R squared could not be calculated as the log of the maximum likelihood value could not be extracted by any function in R or calculated by hand. The GLM model had an AIC of 5177.2 and the random effects model offered a modest improvement to 5149.0. A fixed effects model was also estimated, which had an AIC of 1072, but as described in Chapter 3 the fixed effects model was inappropriate for this data and likely inaccurate. Table 8 summarizes the GLM and random effects models.
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Table 8 Full Model Results
