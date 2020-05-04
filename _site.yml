@@ -1,6 +1,7 @@
 name: "developmentdisplacement"
 output_dir: "."
 navbar:
+  type: inverse
   title: "Development and Displacement"
   left:
     - text: "Home"
@@ -17,7 +18,7 @@ navbar:
       href: results.html
     - text: "Discussion"
       href: Discussion.html
-    - text: "Limitation"
+    - text: "Limitations"
       href: Limitation.html
     - text: "Works Cited"
       href: Works.html
