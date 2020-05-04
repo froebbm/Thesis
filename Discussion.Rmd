@@ -24,7 +24,7 @@ Previous research has shown that residents who believe their neighborhood is gen
 
 One possible explanation of the difference between residential and commercial permits is that as new housing developments are put in low income residents put more of their income towards their rent. Eventually the influx of new, more affluent residents attracts the attention of commercial developers who flock to these areas and proceed to develop more amenities. This causes rents to rise at a significantly faster rate than the housing development finally making the neighborhood truly unaffordable to the previous residents. The former residents then move to areas with less amenities and less development.  This could explain why estimated rent was insignificant in the final model. However, further research at a more granular temporal scale would be necessary to support his hypothesis.
 
-#Violent vs Non-Violent Crime
+# Violent vs Non-Violent Crime
 
 Previous research has used crime rate per neighborhood or census tract as a proxy for how safe one may feel in their home. With those feeling unsafe being more likely to move to safer neighborhoods, assuming they can afford it (Desmond et al., 2015). By using non-aggregated data directly from the BPD, this research improves on previous models by using the direct location of crimes reported limiting any MAUP effects (Desmond et al., 2015; Desmond & Gershenson, 2017; Park & Kwan, 2018). 
 
