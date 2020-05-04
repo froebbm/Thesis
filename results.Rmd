@@ -116,7 +116,7 @@ kable(Table6, caption = "Table 6 Trend Surface") %>%
 
 Finally, a model was estimated using evictions per census tract, estimated rent per bedroom, and the crime and permit variables. All variables except residential permits were significant, with the crime and permit variables following the same pattern described earlier and rent (OR = 1.0002) and evictions (OR = 1.004) were both associated with an increased likelihood of moving. Specifically, a $1000 increase in per bedroom rent was associated with a 10.6% increase in move likelihood. Overall, these variables produced the strongest model of any individual set of variables (Pseudo – R2 = 0.772), which indicates that neighborhood characteristics are likely an important factor in why individuals and households choose to move. Table 7 summarizes all the model results for spatial variables.
 
-```{r Table 7}
+```{r Table 7, echo=FALSE, message=FALSE, warning=FALSE}
 setwd("C:/Users/brian/OneDrive/Documents/GitHub/Thesis")
 Table7 <- read.csv("Table7.csv")
 library(knitr)

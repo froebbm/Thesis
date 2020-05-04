@@ -5,13 +5,13 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Introduction"
+    - text: "Intro"
       href: introduction.html
     - text: "Literature Review"
       href: lit_review.html
-    - text: "Data, Data Preparation, and Methods"
+    - text: "Methods"
       href: methods.html     
-    - text: "Exploratory Data Analysis"
+    - text: "EDA"
       href: EDA.html
     - text: "Results"
       href: results.html

@@ -59,7 +59,7 @@ In this study older residents were less likely to move when compared to younger 
  library(extrafont)
  library(spdep)
 
-Regression_Data_Full <- openxlsx::read.xlsx("H:/Thesis/Tabular Data/Regression_Data_Final.xlsx")
+Regression_Data_Full <- openxlsx::read.xlsx("Regression_Data_Final.xlsx")
 
 Regression_Data_Full$High_School_Grad <- NA
 Regression_Data_Full$High_School_Grad[Regression_Data_Full$Ed_Attain == "High School"] <- "Yes"
